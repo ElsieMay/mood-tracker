@@ -1,5 +1,4 @@
 const express = require("express");
-require("dotenv").config();
 const db = require("./config/connection");
 const path = require("path");
 const { ApolloServer } = require("apollo-server-express");
@@ -38,11 +37,5 @@ const startApolloServer = async (typeDefs, resolvers) => {
 		});
 	});
 };
-
-app.use(routes);
-
-db.once("open", () => {
-	app.listen(PORT, () => console.log(`Now listening on localhost: ${PORT}`));
-});
 
 startApolloServer(typeDefs, resolvers);

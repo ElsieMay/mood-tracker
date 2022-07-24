@@ -17,7 +17,6 @@ module.exports = {
 
 		try {
 			const { data } = jwt.verify(token, secret, { maxAge: expiration });
-			console.log("data undefined>>>>>>>>>>>>>>>>>>>>", data);
 			req.user = data;
 		} catch (err) {
 			// console.log(err);

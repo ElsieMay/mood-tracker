@@ -1,27 +1,27 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
 
-// import schema from Book.js
+// import schema from mood.js
 const moodSchema = require("./Mood");
 
 const userSchema = new Schema(
 	{
 		username: {
 			type: String,
-			required: true,
+			required: [true, "Please add a name"],
 			unique: true,
 		},
 		email: {
 			type: String,
-			required: true,
+			required: [true, "Please add an email"],
 			unique: true,
 			match: [/.+@.+\..+/, "Must use a valid email address"],
 		},
 		password: {
 			type: String,
-			required: true,
+			required: [true, "Please add a password"],
 		},
-		// set savedBooks to be an array of data that adheres to the bookSchema
+		// set savedMoods to be an array of data that adheres to the moodSchema
 		savedMoods: [moodSchema],
 	},
 	// set this to use virtual below
@@ -47,9 +47,9 @@ userSchema.methods.isCorrectPassword = async function (password) {
 	return bcrypt.compare(password, this.password);
 };
 
-// when we query a user, we'll also get another field called `bookCount` with the number of saved books we have
+// when we query a user, we'll also get another field called `moodCount` with the number of saved moods we have
 userSchema.virtual("moodCount").get(function () {
-	return this.savedBooks.length;
+	return this.savedMoods.length;
 });
 
 const User = model("User", userSchema);
