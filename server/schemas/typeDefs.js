@@ -33,5 +33,5 @@ const typeDefs = gql`
 		deleteMood(moodId: ID!): User
 	}
 `;
-// export the typeDefs
+
 module.exports = typeDefs;

@@ -1,33 +1,34 @@
 import React from "react";
 import { FaBars } from "react-icons/fa";
-import { Nav, NavbarContainer, NavLogo, MobileIcon, NavMenu, NavItem, NavLinks } from "./NavbarElements";
+import MainLogo from "../assets/mood-logo.png";
+import { Nav, NavbarContainer, NavLogo, MobileIcon, NavMenu, NavItem, NavLinks, NavBtn, NavBtnLink } from "./NavbarElements";
 
 export const Navbar = () => {
 	return (
 		<>
 			<Nav>
 				<NavbarContainer>
-					<NavLogo to="/">mood</NavLogo>
+					<NavLogo to="/">
+						<img src={MainLogo} alt="logo" width="150px" />
+					</NavLogo>
 					<MobileIcon>
 						<FaBars />
 					</MobileIcon>
 					<NavMenu>
 						<NavItem>
-							<NavLinks to="mood">My Mood</NavLinks>
+							<NavLinks to="/">My Mood</NavLinks>
 						</NavItem>
 						<NavItem>
-							<NavLinks to="me">My Month</NavLinks>
+							<NavLinks to="/saved">My Month</NavLinks>
 						</NavItem>
 						<NavItem>
 							<NavLinks to="services">Services</NavLinks>
 						</NavItem>
-						<NavItem>
-							<NavLinks to="addUser">Sign Up</NavLinks>
-						</NavItem>
-						<NavBtn>
-							<NavBtnLink to="/login">Login</NavBtnLink>
-						</NavBtn>
 					</NavMenu>
+					<NavBtn>
+						<NavBtnLink to="/login">Login</NavBtnLink>
+						<NavBtnLink to="addUser">Sign Up</NavBtnLink>
+					</NavBtn>
 				</NavbarContainer>
 			</Nav>
 		</>

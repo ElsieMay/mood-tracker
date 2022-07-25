@@ -1,4 +1,3 @@
-// route to get logged in user's info (needs the token)
 export const getMe = (token) => {
 	return fetch("/api/users/me", {
 		headers: {
@@ -28,7 +27,6 @@ export const loginUser = (userData) => {
 	});
 };
 
-// save mood data for a logged in user
 export const saveMood = (moodData, token) => {
 	return fetch("/api/users", {
 		method: "PUT",
@@ -40,7 +38,6 @@ export const saveMood = (moodData, token) => {
 	});
 };
 
-// remove saved mood data for a logged in user
 export const deleteMood = (moodId, token) => {
 	return fetch(`/api/users/moods/${moodId}`, {
 		method: "DELETE",
