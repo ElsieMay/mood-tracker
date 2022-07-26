@@ -1,7 +1,8 @@
-import Background from "../components/assets/laya-clode-Zf4yTni1CWg-unsplash.jpg";
 import React, { useState } from "react";
 import { Navbar } from "../components/Navbar";
 import { Sidebar } from "../components/Sidebar";
+import { Hero } from "../components/HomePage";
+import styled from "styled-components";
 
 export const Home = () => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -10,10 +11,18 @@ export const Home = () => {
 		setIsOpen(!isOpen);
 	};
 
+	const Wrapper = styled.div`
+		display: flex;
+		flex-direction: column;
+	`;
+
 	return (
 		<div>
 			<Sidebar isOpen={isOpen} toggle={toggle} />
-			<Navbar toggle={toggle} />
+			<Wrapper>
+				<Navbar toggle={toggle} />
+				<Hero />
+			</Wrapper>
 		</div>
 	);
 };
