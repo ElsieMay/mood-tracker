@@ -4,7 +4,7 @@ import { Sidebar } from "../components/Sidebar";
 import { Hero } from "../components/HomePage";
 import styled from "styled-components";
 
-const Home = () => {
+const Month = () => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	const toggle = () => {
@@ -27,4 +27,4 @@ const Home = () => {
 	);
 };
 
-export default Home;
+export default Month;

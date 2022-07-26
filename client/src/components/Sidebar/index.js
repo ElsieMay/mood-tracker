@@ -9,12 +9,12 @@ export const Sidebar = ({ isOpen, toggle }) => {
 			</Icon>
 			<SidebarWrapper>
 				<SidebarMenu>
-					<SidebarLink to="/">My Mood</SidebarLink>
-					<SidebarLink to="/saved">My Month</SidebarLink>
-					<SidebarLink to="services">Services</SidebarLink>
+					<SidebarLink to="/mood-tracker/mood">My Mood</SidebarLink>
+					<SidebarLink to="/mood-tracker/month">My Month</SidebarLink>
+					<SidebarLink to="/mood-tracker/services">Services</SidebarLink>
 					<SideBtnWrap>
-						<SidebarRoute to="/login">Login</SidebarRoute>
-						<SidebarRoute to="addUser">Sign Up</SidebarRoute>
+						<SidebarRoute to="/mood-tracker/login">Login</SidebarRoute>
+						<SidebarRoute to="/mood-tracker/signup">Sign Up</SidebarRoute>
 					</SideBtnWrap>
 				</SidebarMenu>
 			</SidebarWrapper>

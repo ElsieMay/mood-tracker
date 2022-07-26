@@ -3,12 +3,12 @@ import { FaBars } from "react-icons/fa";
 import MainLogo from "../assets/mood-logo.png";
 import { Nav, NavbarContainer, NavLogo, MobileIcon, NavMenu, NavItem, NavLinks, NavBtn, NavBtnLink } from "./NavbarElements";
 
-export const Navbar = ({ toggle }) => {
+const Navbar = ({ toggle }) => {
 	return (
 		<>
 			<Nav>
 				<NavbarContainer>
-					<NavLogo to="/">
+					<NavLogo to="/mood-tracker">
 						<img src={MainLogo} alt="logo" width="150px" />
 					</NavLogo>
 					<MobileIcon onClick={toggle}>
@@ -16,21 +16,23 @@ export const Navbar = ({ toggle }) => {
 					</MobileIcon>
 					<NavMenu>
 						<NavItem>
-							<NavLinks to="/">My Mood</NavLinks>
+							<NavLinks to="/mood-tracker/mood">My Mood</NavLinks>
 						</NavItem>
 						<NavItem>
-							<NavLinks to="/saved">My Month</NavLinks>
+							<NavLinks to="/mood-tracker/month">My Month</NavLinks>
 						</NavItem>
 						<NavItem>
-							<NavLinks to="services">Services</NavLinks>
+							<NavLinks to="/mood-tracker/services">Services</NavLinks>
 						</NavItem>
 					</NavMenu>
 					<NavBtn>
-						<NavBtnLink to="/login">Login</NavBtnLink>
-						<NavBtnLink to="addUser">Sign Up</NavBtnLink>
+						<NavBtnLink to="/mood-tracker/login">Login</NavBtnLink>
+						<NavBtnLink to="/mood-tracker/signup">Sign Up</NavBtnLink>
 					</NavBtn>
 				</NavbarContainer>
 			</Nav>
 		</>
 	);
 };
+
+export default Navbar;
