@@ -3,7 +3,7 @@ import { FaBars } from "react-icons/fa";
 import MainLogo from "../assets/mood-logo.png";
 import { Nav, NavbarContainer, NavLogo, MobileIcon, NavMenu, NavItem, NavLinks, NavBtn, NavBtnLink } from "./NavbarElements";
 
-export const Navbar = () => {
+export const Navbar = ({ toggle }) => {
 	return (
 		<>
 			<Nav>
@@ -11,7 +11,7 @@ export const Navbar = () => {
 					<NavLogo to="/">
 						<img src={MainLogo} alt="logo" width="150px" />
 					</NavLogo>
-					<MobileIcon>
+					<MobileIcon onClick={toggle}>
 						<FaBars />
 					</MobileIcon>
 					<NavMenu>

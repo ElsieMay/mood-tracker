@@ -1,12 +1,10 @@
-import { Navbar } from "./components/Navbar";
+import { Home } from "./pages";
 import { BrowserRouter as Router } from "react-router-dom";
-import { Sidebar } from "./components/Sidebar";
 
 function App() {
 	return (
 		<Router className="container">
-			<Sidebar />
-			<Navbar />
+			<Home />
 		</Router>
 	);
 }
