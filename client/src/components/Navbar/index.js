@@ -9,7 +9,7 @@ const Navbar = ({ toggle }) => {
 			<Nav>
 				<NavbarContainer>
 					<NavLogo to="/mood-tracker">
-						<img src={MainLogo} alt="logo" width="150px" />
+						<img src={MainLogo} alt="logo" width="110px" />
 					</NavLogo>
 					<MobileIcon onClick={toggle}>
 						<FaBars />

@@ -20,7 +20,7 @@ export const Hero = () => {
 					<HeroTitle>How is your mood today?</HeroTitle>
 					<HeroP>Take note of your moods daily, to keep track of your mental health.</HeroP>
 					<HeroBtnWrapper>
-						<Button to="signup" onMouseEnter={onHover} onMouseLeave={onHover} primary="true" dark="true">
+						<Button to="/mood-tracker/signup" onMouseEnter={onHover} onMouseLeave={onHover} primary="true" dark="true">
 							Begin your journey{hover ? <ArrowForward /> : <ArrowRight />}
 						</Button>
 					</HeroBtnWrapper>
