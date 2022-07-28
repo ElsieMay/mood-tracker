@@ -1,5 +1,5 @@
-const form = ({ toggle }) => {
+const Form = ({ toggle }) => {
 	return <></>;
 };
 
-export default form;
+export default Form;
