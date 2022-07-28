@@ -66,6 +66,7 @@ const SignUp = () => {
 	`;
 
 	const handleForm = async (event) => {
+		console.log("here");
 		event.preventDefault();
 
 		const form = event.currentTarget;
@@ -126,10 +127,10 @@ const SignUp = () => {
 									<StyledFormControl type="password" placeholder="Your password" name="password" onChange={handleInputChange} value={userData.password} required />
 									<StyledFormControlFeedback type="invalid">Please enter a password</StyledFormControlFeedback>
 								</StyledFormGroup>
+								<StyledButton disabled={!(userData.username && userData.email && userData.password)} type="submit" variant="success">
+									Submit
+								</StyledButton>
 							</StyledForm>
-							<StyledButton disabled={!(userData.username && userData.email && userData.password)} type="submit" variant="success">
-								Submit
-							</StyledButton>
 						</FormContent>
 					</FormWrapper>
 				</FormContainer>
