@@ -6,7 +6,9 @@ const HeroSignUp = () => {
 	return (
 		<>
 			<SignUpContainer>
-				<SignUpBg>{/* <img src={Background} alt="Logo" height="1900" /> */}</SignUpBg>
+				<SignUpBg>
+					<img src={Background} alt="Logo" height="1900" />
+				</SignUpBg>
 			</SignUpContainer>
 		</>
 	);

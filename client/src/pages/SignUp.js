@@ -2,17 +2,14 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import Auth from "../utils/auth";
 import { ADD_USER } from "../utils/mutations";
-// import { Button } from "../components/Button";
 import Navbar from "../components/Navbar/index";
 import { Sidebar } from "../components/Sidebar";
-// import styled from "styled-components";
 import { Form, Alert, Button } from "react-bootstrap";
 import { FormContainer, FormWrapper, FormContent } from "../components/SignUp/SignUpElements";
 import { Icon } from "../components/Sidebar/SidebarElements";
 import MainLogo from "../components/assets/mood-logo.png";
 import { NavLogo } from "../components/Navbar/NavbarElements";
 import HeroSignUp from "../components/SignUp/index";
-// import "../components/assets/laya-clode-Zf4yTni1CWg-unsplash.jpg";
 
 const SignUp = () => {
 	const [userData, setUserData] = useState({ username: "", email: "", password: "" });
@@ -30,40 +27,6 @@ const SignUp = () => {
 	const toggle = () => {
 		setIsOpen(!isOpen);
 	};
-
-	// const Wrapper = styled.div`
-	// 	display: flex;
-	// 	flex-direction: column;
-	// `;
-
-	// const StyledFormLabel = styled(Form.Label)`
-	// 	color: white;
-	// 	font-size: 20px;
-	// `;
-
-	// const StyledFormControl = styled(Form.Control)`
-	// 	color: black;
-	// `;
-
-	// const StyledFormControlFeedback = styled(Form.Control.Feedback)`
-	// 	color: white;
-	// `;
-
-	// const StyledFormGroup = styled(Form.Group)`
-	// 	display: flex;
-	// 	flex-direction: column;
-	// 	align-items: center;
-	// 	justify-content: space-between;
-	// 	padding: 20px;
-	// `;
-
-	// const StyledForm = styled(Form)`
-	// 	margin-bottom: 40px;
-	// `;
-
-	// const StyledButton = styled(Button)`
-	// 	width: 200px;
-	// `;
 
 	const handleForm = async (event) => {
 		console.log("here");
@@ -91,7 +54,6 @@ const SignUp = () => {
 			password: "",
 		});
 	};
-	// img: require("../components/assets/laya-clode-Zf4yTni1CWg-unsplash.jpg");
 	return (
 		<>
 			<div>
