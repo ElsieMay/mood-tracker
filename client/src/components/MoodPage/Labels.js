@@ -3,12 +3,12 @@ import React from "react";
 const obj = [
 	{
 		type: "Anxiousness",
-		color: "#d6de88",
+		color: "#e1b37f",
 		percent: 30,
 	},
 	{
 		type: "Low Mood",
-		color: "#e1b37f",
+		color: "#d6de88",
 		percent: 80,
 	},
 ];
