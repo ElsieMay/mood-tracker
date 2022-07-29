@@ -37,7 +37,7 @@ const Graph = () => {
 			<div className="flex justify-content max-w-xs mx-auto">
 				<div className="item">
 					<div className="chart relative">
-						<Bar data={data} options={options} width={400} height={550} />
+						<Bar data={data} options={options} width={300} height={450} />
 					</div>
 					<div className="flex flex-col py-10 gap-4">
 						<Labels></Labels>
