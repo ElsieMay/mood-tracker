@@ -11,7 +11,7 @@ const Graph = () => {
 		datasets: [
 			{
 				label: "# of Votes",
-				data: [12, 35],
+				data: [12, 19],
 				backgroundColor: ["rgba(204, 204, 153, 0.2)", "rgba(204, 153, 102, 0.2)"],
 				borderColor: ["rgba(177, 185, 91, 1)", "rgba(194, 154, 108, 1)"],
 				hoverOffset: 4,
