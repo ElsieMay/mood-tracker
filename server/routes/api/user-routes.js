@@ -3,12 +3,12 @@ const { createUser, getSingleUser, saveMood, deleteMood, login } = require("../.
 
 const { authMiddleware } = require("../../utils/auth");
 
-router.route("/").post(createUser).put(authMiddleware, saveMood);
+router.route("api/").post(createUser).put(authMiddleware, saveMood);
 
-router.route("/login").post(login);
+router.route("api/login").post(login);
 
-router.route("/me").get(authMiddleware, getSingleUser);
+router.route("api/me").get(authMiddleware, getSingleUser);
 
-router.route("/moods/:moodId").delete(authMiddleware, deleteMood);
+router.route("api/moods/:moodId").delete(authMiddleware, deleteMood);
 
 module.exports = router;
