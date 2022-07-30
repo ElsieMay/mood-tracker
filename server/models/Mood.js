@@ -28,3 +28,5 @@ const anxiousness = new Schema({
 
 const LowMood = mongoose.model("low_mood", low_mood);
 const Anxiousness = mongoose.model("anxiousness", anxiousness);
+
+module.exports = { LowMood, Anxiousness };
