@@ -19,7 +19,8 @@ module.exports = {
 		const user = await User.create(body);
 
 		if (!user) {
-			return res.status(400).json({ message: "Something is wrong!" });
+			// return res.status(400).json({ message: "Something is wrong!" });
+			res.json({ test: "You see me" });
 		}
 		const token = signToken(user);
 		res.json({ token, user });
