@@ -1,4 +1,5 @@
 import React from "react";
+import { default as api } from "../../store/apiSlice";
 
 const obj = [
 	{
@@ -14,6 +15,8 @@ const obj = [
 ];
 
 export const Labels = () => {
+	console.log(api.useGetMoodsQuery());
+
 	return (
 		<>
 			{obj.map((v, i) => (
