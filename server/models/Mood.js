@@ -21,9 +21,7 @@ const lowSchema = new Schema({
 	moodId: {
 		type: String,
 	},
-	title: {
-		type: String,
-	},
+	type: { type: String, default: "low" },
 	color: { type: String, default: "#d6de88" },
 	date: { type: Date, default: Date.now },
 });
@@ -35,9 +33,7 @@ const anxiousnessSchema = new Schema({
 	moodId: {
 		type: String,
 	},
-	title: {
-		type: String,
-	},
+	type: { type: String, default: "anxiousness" },
 	color: { type: String, default: "#e1b37f" },
 	date: { type: Date, default: Date.now },
 });

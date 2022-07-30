@@ -1,5 +1,5 @@
 const { User } = require("../models");
-const { Mood } = require("../models");
+const model = require("../models/Mood");
 const { signToken } = require("../utils/auth");
 
 module.exports = {
@@ -13,6 +13,32 @@ module.exports = {
 		}
 
 		res.json(foundUser);
+	},
+
+	async getLowMood({ user, body }, res) {
+		let data = await model.lowSchema.find({});
+
+		let filter = await data.map((v) => Object.assign({}, { type: v.type, color: v.color }));
+		res.json(filter);
+	},
+
+	async createLowMood({ body }, res) {
+		const Create = new model.lowSchema({
+			type: "low",
+			color: "#d6de88",
+		});
+
+		await Create.save(function (err) {
+			if (!err) return res.json(Create);
+			return res.status(400).json({ message: `Error while creating low mood ${err}` });
+		});
+	},
+
+	async getAnxiousnessMood({ user, body }, res) {
+		let data = await model.lowSchema.find({});
+
+		let filter = await data.map((v) => Object.assign({}, { type: v.type, color: v.color }));
+		res.json(filter);
 	},
 
 	async createUser({ body }, res) {
@@ -59,4 +85,8 @@ module.exports = {
 		}
 		return res.json(updatedUser);
 	},
+};
+
+module.exports = {
+	getLowMood,
 };

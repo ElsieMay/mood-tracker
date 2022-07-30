@@ -13,7 +13,7 @@ export const apiSlice = createApi({
 			return headers;
 		},
 		headers: {
-			Accept: "application/json, text/plain, */*", // It can be used to overcome cors errors
+			Accept: "application/json, text/plain, */*",
 			"Content-Type": "application/json",
 		},
 		body: JSON.stringify(),
@@ -24,11 +24,11 @@ export const apiSlice = createApi({
 	// 		query: () => "/api/users",
 	// 	}),
 	// }),
-	endpoints(build) {
+	endpoints(builder) {
 		return {
-			saveMood: build.query({ query: () => ({ url: "/api/users.json", method: "get" }) }),
-			mutation: build.mutation({
-				query: () => ({ url: "/api/users.json", method: "post" }),
+			saveMood: builder.query({ query: () => ({ url: "/api/users", method: "get" }) }),
+			mutation: builder.mutation({
+				query: () => ({ url: "/api/users", method: "post" }),
 			}),
 		};
 	},

@@ -16,6 +16,10 @@ const cors = require("cors");
 
 app.use(cors());
 
+const con = require("./config/connection");
+
+app.use(require("./routes/index"));
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
