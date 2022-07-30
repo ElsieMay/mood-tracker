@@ -1,9 +1,9 @@
 const router = require("express").Router();
-const { createUser, getSingleUser, saveMood, deleteMood, login } = require("../../controllers/user-controller");
+const { createUser, createLowMood, getLowMood, createAnxiousnessMood, getAnxiousnessMood, getSingleUser, saveMood, deleteMood, login } = require("../../controllers/user-controller");
 
 const { authMiddleware } = require("../../utils/auth");
 
-router.route("api/").post(createUser).put(authMiddleware, saveMood);
+router.route("api/users").post(createUser).put(authMiddleware, saveMood).post(createLowMood).get(getLowMood).post(createAnxiousnessMood).get(getAnxiousnessMood);
 
 router.route("api/login").post(login);
 
