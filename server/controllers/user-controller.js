@@ -1,4 +1,5 @@
 const { User } = require("../models");
+const { Mood } = require("../models");
 const { signToken } = require("../utils/auth");
 
 module.exports = {

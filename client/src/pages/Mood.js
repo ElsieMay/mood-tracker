@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar/index";
 import { Sidebar } from "../components/Sidebar";
 import { Hero } from "../components/HomePage";
 import styled from "styled-components";
+import MoodPage from "../components/MoodPage/index";
 
 const Mood = () => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -21,8 +22,8 @@ const Mood = () => {
 			<Sidebar isOpen={isOpen} toggle={toggle} />
 			<Wrapper>
 				<Navbar toggle={toggle} />
-				<Hero />
 			</Wrapper>
+			<MoodPage></MoodPage>
 		</div>
 	);
 };

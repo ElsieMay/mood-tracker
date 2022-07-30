@@ -1,18 +1,48 @@
-const { Schema } = require("mongoose");
+const { Schema, model } = require("mongoose");
 
-const moodSchema = new Schema({
+// const moodSchema = new Schema({
+// 	description: {
+// 		type: String,
+// 	},
+// 	moodId: {
+// 		type: String,
+// 	},
+// 	title: {
+// 		type: String,
+// 	},
+// });
+
+// module.exports = moodSchema;
+
+const lowSchema = new Schema({
 	description: {
 		type: String,
-		required: true,
 	},
 	moodId: {
 		type: String,
-		required: true,
 	},
 	title: {
 		type: String,
-		required: true,
 	},
+	color: { type: String, default: "#d6de88" },
+	date: { type: Date, default: Date.now },
 });
 
-module.exports = moodSchema;
+const anxiousnessSchema = new Schema({
+	description: {
+		type: String,
+	},
+	moodId: {
+		type: String,
+	},
+	title: {
+		type: String,
+	},
+	color: { type: String, default: "#e1b37f" },
+	date: { type: Date, default: Date.now },
+});
+
+const LowMood = model("LowMood", lowSchema);
+const Anxiousness = model("Anxiousness", anxiousnessSchema);
+
+module.exports = { anxiousnessSchema, lowSchema };
