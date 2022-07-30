@@ -15,5 +15,18 @@ export const GET_ME = gql`
 				}
 			}
 		}
+		mymood {
+			_id
+			username
+			moodCount
+			email
+			savedMoods {
+				savedMoods {
+					moodId
+					title
+					description
+				}
+			}
+		}
 	}
 `;

@@ -11,6 +11,13 @@ const resolvers = {
 			}
 			throw new AuthenticationError("You are not logged in");
 		},
+		mymood: async (parent, args, context) => {
+			if (context.user) {
+				const userData = await Mood.findOne({ _id: context.mood._id });
+				return userData;
+			}
+			throw new AuthenticationError("You are not logged in");
+		},
 	},
 	Mutation: {
 		addUser: async (parent, args) => {

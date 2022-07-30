@@ -35,10 +35,22 @@ module.exports = {
 	},
 
 	async getAnxiousnessMood({ user, body }, res) {
-		let data = await model.lowSchema.find({});
+		let data = await model.anxiousnessSchema.find({});
 
 		let filter = await data.map((v) => Object.assign({}, { type: v.type, color: v.color }));
 		res.json(filter);
+	},
+
+	async createAnxiousnessMood({ body }, res) {
+		const Create = new model.anxiousnessSchema({
+			type: "anxiousness",
+			color: "#e1b37f",
+		});
+
+		await Create.save(function (err) {
+			if (!err) return res.json(Create);
+			return res.status(400).json({ message: `Error while creating low mood ${err}` });
+		});
 	},
 
 	async createUser({ body }, res) {
@@ -85,8 +97,4 @@ module.exports = {
 		}
 		return res.json(updatedUser);
 	},
-};
-
-module.exports = {
-	getLowMood,
 };
