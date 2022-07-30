@@ -15,7 +15,7 @@ const obj = [
 ];
 
 export const Labels = () => {
-	console.log(api.useGetMoodsQuery());
+	console.log(api.useSaveMoodQuery());
 
 	return (
 		<>

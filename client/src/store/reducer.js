@@ -9,9 +9,9 @@ export const moodSlice = createSlice({
 	name: "mood",
 	initialState,
 	reducers: {
-		getMood: (state) => {},
+		saveMood: (state) => {},
 	},
 });
 
-export const { getMood } = moodSlice.actions;
+export const { saveMood } = moodSlice.actions;
 export default moodSlice.reducer;
