@@ -1,6 +1,13 @@
 import styles from "./styles.module.css";
+import { useState } from "react";
 
 const Signup = () => {
+	const [data, setData] = useState({
+		username: "",
+		email: "",
+		password: "",
+	});
+
 	return (
 		<div className={styles.signup_container}>
 			<div className={styles.signup_form_container}>
