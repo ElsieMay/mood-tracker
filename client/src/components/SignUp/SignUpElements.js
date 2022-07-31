@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const SignUpForm = styled.div`
 	position: relative;
+	margin-top: 50px;
 	top: 0;
 	right: 0;
 	bottom: 0;
@@ -12,7 +13,6 @@ export const SignUpForm = styled.div`
 `;
 
 export const FormWrapper = styled.div`
-	// position: absolute;
 	height: 100%;
 	display: flex;
 	flex-direction: column;
