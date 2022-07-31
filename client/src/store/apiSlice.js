@@ -19,11 +19,6 @@ export const apiSlice = createApi({
 		body: JSON.stringify(),
 		mode: "cors",
 	}),
-	// endpoints: (builder) => ({
-	// 	getMoods: builder.query({
-	// 		query: () => "/api/users",
-	// 	}),
-	// }),
 	endpoints(builder) {
 		return {
 			saveMood: builder.query({ query: () => ({ url: "/api/users", method: "get" }) }),

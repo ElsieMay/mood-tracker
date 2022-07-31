@@ -9,6 +9,7 @@ export const getMe = (token) => {
 
 export const getMyMood = (token) => {
 	return fetch("/api/users/mymood", {
+		method: "GET",
 		headers: {
 			"Content-Type": "application/json",
 			authorization: `Bearer ${token}`,
