@@ -25,7 +25,7 @@ const obj = [
 	},
 ];
 
-export const LowMoodForm = () => {
+export const LowMoodForm = (moodId) => {
 	return (
 		<>
 			{obj.map((v, i) => (
@@ -35,14 +35,17 @@ export const LowMoodForm = () => {
 	);
 };
 
-function QuestionComponentLow({ data }) {
+function QuestionComponentLow({ data, event }) {
+	event.preventDefault();
 	// export const QuestionComponentLow = ({ data }) => {
 	const { register, handleSubmit, resetField } = useForm();
 	const onSubmit = async (data) => {
 		if (!data) return {};
 		resetField("amount");
 	};
-	return (
+}
+return (
+	<>
 		<form id="form">
 			<div className="grid gap-4">
 				<h3 className="text-md">{data.question ?? ""}</h3>
@@ -55,5 +58,5 @@ function QuestionComponentLow({ data }) {
 				</div>
 			</div>
 		</form>
-	);
-}
+	</>
+);
