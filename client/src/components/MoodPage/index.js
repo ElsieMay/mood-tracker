@@ -1,6 +1,6 @@
 import React from "react";
-import Graph from "./Graph";
-import MoodForm from "./Form";
+import Graph from "./graph";
+import MoodForm from "./form";
 
 const MoodPage = () => {
 	return (

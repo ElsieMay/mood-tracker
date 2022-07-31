@@ -1,6 +1,5 @@
 import styles from "./styles.module.css";
 import React, { useState } from "react";
-import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../../utils/mutations";
@@ -16,39 +15,43 @@ const Signup = () => {
 		setIsOpen(!isOpen);
 	};
 
-	const [data, setData] = useState({
-		username: "",
-		email: "",
-		password: "",
-	});
+	// set initial form state
+	const [userFormData, setUserFormData] = useState({ username: "", email: "", password: "" });
 
 	const [error, setError] = useState("");
 
+	// set state for form validation
+	const [validated] = useState("false");
+	//mutation
 	const [addUser] = useMutation(ADD_USER);
 
 	const navigate = useNavigate();
 
-	const handleChange = ({ currentTarget: input }) => {
-		setData({ ...data, [input.name]: input.value });
+	const handleInputChange = (event) => {
+		const { name, value } = event.target;
+		setUserFormData({ ...userFormData, [name]: value });
 	};
 
-	const handleSubmit = async (e) => {
-		e.preventDefault();
+	const handleFormSubmit = async (event) => {
+		event.preventDefault();
+
 		try {
-			const url = "http://localhost:3002/api/users";
-			// const { data: res } = await axios.post(url, data);
-			const { data: res } = await addUser({ variables: { ...data } });
-			navigate("mood-tracker/login");
-			console.log(res.message);
-			// const { data } = await addUser({
-			// 	variables: { ...data },
-			// });
+			const { data } = await addUser({
+				variables: { ...userFormData },
+			});
 			Auth.login(data.addUser.token);
+			navigate("/login");
 		} catch (error) {
 			if (error.response && error.response.status >= 400 && error.response.status <= 500) {
-				setError(error.response.data.message);
+				setError(error.response.userFormData.message);
 			}
 		}
+
+		setUserFormData({
+			username: "",
+			email: "",
+			password: "",
+		});
 	};
 
 	return (
@@ -71,13 +74,13 @@ const Signup = () => {
 						</Link>
 					</div>
 					<div className={styles.right}>
-						<form className={styles.form_container} onSubmit={handleSubmit}>
+						<form className={styles.form_container} noValidate validated={validated} onSubmit={handleFormSubmit}>
 							<h1 className={styles.title}>Create Account</h1>
-							<input type="text" placeholder="Username" name="username" onChange={handleChange} value={data.username} required className={styles.input} />
-							<input type="email" placeholder="Email" name="email" onChange={handleChange} value={data.email} required className={styles.input} />
-							<input type="password" placeholder="Password" name="password" onChange={handleChange} value={data.password} required className={styles.input} />
+							<input type="text" placeholder="Username" name="username" onChange={handleInputChange} value={userFormData.username} required className={styles.input} />
+							<input type="email" placeholder="Email" name="email" onChange={handleInputChange} value={userFormData.email} required className={styles.input} />
+							<input type="password" placeholder="Password" name="password" onChange={handleInputChange} value={userFormData.password} required className={styles.input} />
 							{error && <div className={styles.error_msg}>{error}</div>}
-							<button type="submit" className={styles.green_btn}>
+							<button disabled={!(userFormData.username && userFormData.email && userFormData.password)} type="submit" className={styles.green_btn}>
 								Sign Up
 							</button>
 						</form>
