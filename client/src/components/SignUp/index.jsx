@@ -67,7 +67,7 @@ const Signup = () => {
 							<h1>Welcome Back</h1>
 							<Link to="mood-tracker/login">
 								<button type="button" className={styles.white_btn}>
-									Sign Up
+									Login
 								</button>
 							</Link>
 						</div>
