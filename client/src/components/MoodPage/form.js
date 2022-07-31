@@ -1,12 +1,14 @@
 import React from "react";
-import { QuestionComponentLow } from "./LowMoodQuestions";
-import { QuestionComponentAnxiousness } from "./AnxiousnessQuestions";
+import { LowMoodForm } from "./LowMoodQuestions";
+import { AnxiousnessForm } from "./AnxiousnessQuestions";
 
 export default function MoodForm() {
 	return (
 		<>
-			<QuestionComponentLow />
-			<QuestionComponentAnxiousness />
+			<div className="form max-w-sm mx-auto w-96">
+				<LowMoodForm></LowMoodForm>
+				<AnxiousnessForm></AnxiousnessForm>
+			</div>
 		</>
 	);
 }
