@@ -7,6 +7,36 @@ export const getMe = (token) => {
 	});
 };
 
+export const getMyMood = (token) => {
+	return fetch("/api/users/mymood", {
+		method: "GET",
+		headers: {
+			"Content-Type": "application/json",
+			authorization: `Bearer ${token}`,
+		},
+	});
+};
+
+export const createLowMood = (userData) => {
+	return fetch("/api/users", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(userData),
+	});
+};
+
+export const createAnxiousnessMood = (userData) => {
+	return fetch("/api/users", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(userData),
+	});
+};
+
 export const createUser = (userData) => {
 	return fetch("/api/users", {
 		method: "POST",

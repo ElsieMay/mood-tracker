@@ -21,6 +21,7 @@ const typeDefs = gql`
 	}
 	type Query {
 		me: User
+		mymood: Mood
 	}
 	type Auth {
 		token: ID
@@ -29,7 +30,7 @@ const typeDefs = gql`
 	type Mutation {
 		addUser(username: String!, email: String!, password: String!): Auth
 		login(email: String!, password: String!): Auth
-		saveMood(input: savedMood!): User
+		saveMood(input: savedMood): User
 		deleteMood(moodId: ID!): User
 	}
 `;

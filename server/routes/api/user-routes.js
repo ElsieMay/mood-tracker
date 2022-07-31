@@ -1,14 +1,17 @@
 const router = require("express").Router();
-const { createUser, getSingleUser, saveMood, deleteMood, login } = require("../../controllers/user-controller");
+
+const { createUser, createLowMood, getLowMood, createAnxiousnessMood, getAnxiousnessMood, getSingleUser, saveMood, deleteMood, login } = require("../../controllers/user-controller");
 
 const { authMiddleware } = require("../../utils/auth");
 
-router.route("/").post(createUser).put(authMiddleware, saveMood);
+router.route("api/users").post(createUser).put(authMiddleware, saveMood).post(createLowMood).post(createAnxiousnessMood);
 
-router.route("/login").post(login);
+router.route("api/login").post(login);
 
-router.route("/me").get(authMiddleware, getSingleUser);
+router.route("api/me").get(authMiddleware, getSingleUser).get(getLowMood).get(getAnxiousnessMood);
 
-router.route("/moods/:moodId").delete(authMiddleware, deleteMood);
+router.route("api/mymood").get(getLowMood).get(getAnxiousnessMood);
+
+router.route("api/moods/:moodId").delete(authMiddleware, deleteMood);
 
 module.exports = router;
