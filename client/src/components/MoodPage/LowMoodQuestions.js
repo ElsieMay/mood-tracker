@@ -43,9 +43,7 @@ function QuestionComponentLow({ data, event }) {
 		if (!data) return {};
 		resetField("amount");
 	};
-}
-return (
-	<>
+	return (
 		<form id="form">
 			<div className="grid gap-4">
 				<h3 className="text-md">{data.question ?? ""}</h3>
@@ -58,5 +56,5 @@ return (
 				</div>
 			</div>
 		</form>
-	</>
-);
+	);
+}
