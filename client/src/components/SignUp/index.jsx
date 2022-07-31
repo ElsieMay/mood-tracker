@@ -17,12 +17,15 @@ const Signup = () => {
 
 	// set initial form state
 	const [userFormData, setUserFormData] = useState({ username: "", email: "", password: "" });
+
 	const [error, setError] = useState("");
-	const navigate = useNavigate();
+
 	// set state for form validation
-	const [validated] = useState(false);
+	const [validated] = useState("false");
 	//mutation
 	const [addUser] = useMutation(ADD_USER);
+
+	const navigate = useNavigate();
 
 	const handleInputChange = (event) => {
 		const { name, value } = event.target;
@@ -31,13 +34,6 @@ const Signup = () => {
 
 	const handleFormSubmit = async (event) => {
 		event.preventDefault();
-
-		// check if form has everything (as per react-bootstrap docs)
-		const form = event.currentTarget;
-		if (form.checkValidity() === false) {
-			event.preventDefault();
-			event.stopPropagation();
-		}
 
 		try {
 			const { data } = await addUser({

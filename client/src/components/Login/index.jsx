@@ -16,8 +16,11 @@ const Login = () => {
 	};
 
 	const [userFormData, setUserFormData] = useState({ email: "", password: "" });
+
 	const [error, setError] = useState("");
-	const [validated] = useState(false);
+
+	const [validated] = useState("false");
+
 	const [loginUser] = useMutation(LOGIN_USER);
 
 	const handleInputChange = (event) => {
@@ -27,12 +30,6 @@ const Login = () => {
 
 	const handleFormSubmit = async (event) => {
 		event.preventDefault();
-
-		const form = event.currentTarget;
-		if (form.checkValidity() === false) {
-			event.preventDefault();
-			event.stopPropagation();
-		}
 
 		try {
 			console.log(userFormData);
