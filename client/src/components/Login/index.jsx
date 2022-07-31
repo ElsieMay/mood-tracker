@@ -66,12 +66,12 @@ const Signup = () => {
 				<div className={styles.login_form_container}>
 					<div className={styles.left}>
 						<form className={styles.form_container} noValidate validated={validated} onSubmit={handleFormSubmit}>
-							<h1 className={styles.title}>Login</h1>
+							<h1 className={styles.title}>Login to Your Account</h1>
 							<input type="email" placeholder="Email" name="email" onChange={handleInputChange} value={userFormData.email} required className={styles.input} />
 							<input type="password" placeholder="Password" name="password" onChange={handleInputChange} value={userFormData.password} required className={styles.input} />
 							{error && <div className={styles.error_msg}>{error}</div>}
 							<button disabled={!(userFormData.email && userFormData.password)} type="submit" className={styles.green_btn}>
-								Login
+								Sign In
 							</button>
 						</form>
 					</div>
