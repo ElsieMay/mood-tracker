@@ -1,7 +1,7 @@
 import styles from "./styles.module.css";
 import React, { useState } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../../utils/mutations";
 import Auth from "../../utils/auth";
@@ -17,7 +17,6 @@ const Signup = () => {
 	};
 
 	const [data, setData] = useState({
-		username: "",
 		email: "",
 		password: "",
 	});
@@ -25,8 +24,6 @@ const Signup = () => {
 	const [error, setError] = useState("");
 
 	const [addUser] = useMutation(ADD_USER);
-
-	const navigate = useNavigate();
 
 	const handleChange = ({ currentTarget: input }) => {
 		setData({ ...data, [input.name]: input.value });
