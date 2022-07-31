@@ -8,6 +8,24 @@ const Signup = () => {
 		password: "",
 	});
 
+	const handleChange = ({ currentTarget: input }) => {
+		setData({ ...data, [input.name]: input.value });
+	};
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		try {
+			const url = "http://localhost:8080/api/users";
+			const { data: res } = await axios.post(url, data);
+			navigate("/login");
+			console.log(res.message);
+		} catch (error) {
+			if (error.response && error.response.status >= 400 && error.response.status <= 500) {
+				setError(error.response.data.message);
+			}
+		}
+	};
+
 	return (
 		<div className={styles.signup_container}>
 			<div className={styles.signup_form_container}>
@@ -27,7 +45,7 @@ const Signup = () => {
 						<input type="password" placeholder="Password" name="password" onChange={handleChange} value={data.password} required className={styles.input} />
 						{error && <div className={styles.error_msg}>{error}</div>}
 						<button type="submit" className={styles.green_btn}>
-							Sing Up
+							Sign Up
 						</button>
 					</form>
 				</div>
