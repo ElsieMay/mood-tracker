@@ -21,15 +21,11 @@ const obj = [
 		question: "How often have you been bothered by not being able to stop or control worrying?",
 	},
 	{
-		question: "How often have you been bothered by worrying too much about different things?",
-	},
-	{
 		question: "How often have you been bothered by having trouble relaxing?",
 	},
 ];
 
 export const AnxiousnessForm = () => {
-	const { register, handleSubmit } = useForm();
 	return (
 		<>
 			{obj.map((v, i) => (
@@ -40,6 +36,8 @@ export const AnxiousnessForm = () => {
 };
 
 function QuestionComponent({ data }) {
+	const { register, handleSubmit } = useForm();
+	const onSubmit = (data) => console.log(data);
 	if (!data) return <></>;
 	return (
 		<div className="form max-w-sm mx-auto w-96">
