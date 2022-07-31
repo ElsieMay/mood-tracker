@@ -8,7 +8,7 @@ import Navbar from "../../components/Navbar";
 import { Sidebar } from "../../components/Sidebar";
 import BackgroundImage from "../assets/laya-clode-Zf4yTni1CWg-unsplash.jpg";
 
-const Signup = () => {
+const Login = () => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	const toggle = () => {
@@ -61,30 +61,6 @@ const Signup = () => {
 					<Navbar toggle={toggle} />
 				</div>
 			</div>
-			{/* <div className={styles.login_container}>
-				<img src={BackgroundImage} alt="image" height="2500" className={styles.image} />
-				<div className={styles.login_form_container}>
-					<div className={styles.left}>
-						<form className={styles.form_container} noValidate validated={validated} onSubmit={handleFormSubmit}>
-							<h1 className={styles.title}>Login to Your Account</h1>
-							<input type="email" placeholder="Email" name="email" onChange={handleInputChange} value={userFormData.email} required className={styles.input} />
-							<input type="password" placeholder="Password" name="password" onChange={handleInputChange} value={userFormData.password} required className={styles.input} />
-							{error && <div className={styles.error_msg}>{error}</div>}
-							<button disabled={!(userFormData.email && userFormData.password)} type="submit" className={styles.green_btn}>
-								Sign In
-							</button>
-						</form>
-					</div>
-					<div className={styles.right}>
-						<h1>New Here?</h1>
-						<Link to="mood-tracker/signup">
-							<button type="button" className={styles.white_btn}>
-								Sign Up
-							</button>
-						</Link>
-					</div>
-				</div>
-			</div> */}
 			<div className={styles.login_container}>
 				<img src={BackgroundImage} alt="image" height="2500" className={styles.image} />
 				<div className={styles.login_form_container}>
@@ -103,7 +79,7 @@ const Signup = () => {
 						<h1>New Here ?</h1>
 						<Link to="/signup">
 							<button type="button" className={styles.white_btn}>
-								Sing Up
+								Sign Up
 							</button>
 						</Link>
 					</div>
@@ -113,4 +89,4 @@ const Signup = () => {
 	);
 };
 
-export default Signup;
+export default Login;
