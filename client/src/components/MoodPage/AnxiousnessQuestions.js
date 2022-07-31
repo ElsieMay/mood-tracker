@@ -29,13 +29,13 @@ export const AnxiousnessForm = () => {
 	return (
 		<>
 			{obj.map((v, i) => (
-				<QuestionComponent key={i} data={v}></QuestionComponent>
+				<QuestionComponentAnxiousness key={i} data={v}></QuestionComponentAnxiousness>
 			))}
 		</>
 	);
 };
 
-function QuestionComponent({ data }) {
+function QuestionComponentAnxiousness({ data }) {
 	const { register, handleSubmit } = useForm();
 	const onSubmit = (data) => console.log(data);
 	if (!data) return <></>;
@@ -45,12 +45,6 @@ function QuestionComponent({ data }) {
 			<form id="form" onSubmit={handleSubmit(onSubmit)}>
 				<div className="grid gap-4">
 					<h3 className="text-md">{data.question ?? ""}</h3>
-					{/* <div className="form-input mt-1 block w-full py-2.5 px-3 border border-gray-200 bg-white rounded-md focus:outline-none focus:ring-indigo-500 sm:text-sm" {...register("amount")}>
-						<option value="Never">Never</option>
-						<option value="Sometimes">Sometimes</option>
-						<option value="Frequently">Frequently</option>
-						<option value="Always">Always</option>
-					</select> */}
 					<h3>Please enter between 0-3 for how much this applied to you today</h3>
 					<div className="input-group">
 						<input type="text" {...register("amount")} placeholder="Amount" className="form-inputmt-1 block w-full py-2.5 px-3 border border-gray-200 bg-white rounded-md focus:outline-none focus:ring-indigo-500 sm:text-sm" />
@@ -63,3 +57,5 @@ function QuestionComponent({ data }) {
 		</div>
 	);
 }
+
+export default QuestionComponentAnxiousness;
