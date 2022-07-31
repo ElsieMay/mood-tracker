@@ -10,7 +10,7 @@ import MainLogo from "../components/assets/mood-logo.png";
 import { NavLogo } from "../components/Navbar/NavbarElements";
 import HeroSignUp from "../components/SignUp/index";
 // import { Grid, TextField, Button, Card, CardContent, Typography } from "@material-ui/core";
-import { Grid, Button, Typography } from "@mui/material";
+// import { Grid, Button, Typography } from "@mui/material";
 
 const SignUp = () => {
 	const [userData, setUserData] = useState({ username: "", email: "", password: "" });
@@ -91,7 +91,7 @@ const SignUp = () => {
 					</Button>
 				</Form>
 			</div> */}
-			<Grid>
+			{/* <Grid>
 				<Card style={{ maxWidth: 450, padding: "20px 5px", margin: "0 auto" }}>
 					<CardContent>
 						<Typography gutterBottom variant="h5">
@@ -126,7 +126,7 @@ const SignUp = () => {
 						</form>
 					</CardContent>
 				</Card>
-			</Grid>
+			</Grid> */}
 		</>
 	);
 };
