@@ -9,8 +9,6 @@ import { Icon } from "../components/Sidebar/SidebarElements";
 import MainLogo from "../components/assets/mood-logo.png";
 import { NavLogo } from "../components/Navbar/NavbarElements";
 import HeroSignUp from "../components/SignUp/index";
-// import { Grid, TextField, Button, Card, CardContent, Typography } from "@material-ui/core";
-// import { Grid, Button, Typography } from "@mui/material";
 
 const SignUp = () => {
 	const [userData, setUserData] = useState({ username: "", email: "", password: "" });
