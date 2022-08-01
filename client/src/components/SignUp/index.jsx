@@ -40,7 +40,7 @@ const Signup = () => {
 				variables: { ...userFormData },
 			});
 			Auth.login(data.addUser.token);
-			navigate("/login");
+			navigate("http://localhost:3002/mood-tracker/login");
 		} catch (error) {
 			if (error.response && error.response.status >= 400 && error.response.status <= 500) {
 				setError(error.response.userFormData.message);
