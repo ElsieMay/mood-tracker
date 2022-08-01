@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import Home from "./pages/index";
@@ -38,6 +38,7 @@ function App() {
 			<Router>
 				<>
 					<Routes>
+						<Route exact path="/" element={<Navigate to="/mood-tracker" replace />} />
 						<Route path="/mood-tracker" element={<Home />} />
 						<Route path="/mood-tracker/signup" element={<SignUp />} />
 						<Route path="/mood-tracker/login" element={<Login />} />
