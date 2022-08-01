@@ -25,7 +25,7 @@ const obj = [
 	},
 ];
 
-export const AnxiousnessForm = (moodId) => {
+export const AnxiousnessForm = () => {
 	return (
 		<>
 			{obj.map((v, i) => (
@@ -35,8 +35,7 @@ export const AnxiousnessForm = (moodId) => {
 	);
 };
 
-function QuestionComponentAnxiousness({ data, event }) {
-	event.preventDefault();
+function QuestionComponentAnxiousness({ data }) {
 	// export const QuestionComponentAnxiousness = ({ data }) => {
 	const { register, handleSubmit, resetField } = useForm();
 	const onSubmit = async (data) => {
