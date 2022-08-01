@@ -71,7 +71,7 @@ const QuestionComponentAnxiousness = ({ data, event, moodId }) => {
 			});
 			setSavedMoodIds([...savedMoodIds, savedMoodId.moodId]);
 		} catch (err) {
-			console.error(err);
+			// console.log(err);
 		}
 	};
 
