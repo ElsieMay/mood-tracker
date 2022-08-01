@@ -24,20 +24,24 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 if (process.env.NODE_ENV === "production") {
+	console.log("1");
 	app.use(express.static(path.join(__dirname, "../client/build")));
 }
 
-app.get("/", (req, res) => {
-	res.sendFile(path.join(__dirname, "../client/build/index.html"));
-});
-
-app.get("/*", (req, res) => {
-	res.sendFile(path.join(__dirname, "../client/build/index.html"));
-});
+// app.get("/", (req, res) => {
+// 	console.log("2")
+// 	res.sendFile(path.join(__dirname, "../client/build/index.html"));
+// });
 
 const startApolloServer = async (typeDefs, resolvers) => {
 	await server.start();
 	server.applyMiddleware({ app });
+
+	if (process.env.NODE_ENV === "production") {
+		app.get("*", (req, res) => {
+			res.sendFile(path.join(__dirname, "../client/build/index.html"));
+		});
+	}
 
 	db.once("open", () => {
 		app.listen(PORT, () => {
