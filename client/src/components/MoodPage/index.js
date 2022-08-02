@@ -7,6 +7,7 @@ import { GET_MY_MOOD } from "../../utils/queries";
 const MoodPage = () => {
 	const { loading, data } = useQuery(GET_MY_MOOD);
 	console.log(data);
+
 	return (
 		<div>
 			<div className="App">

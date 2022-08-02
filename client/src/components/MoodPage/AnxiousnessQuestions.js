@@ -3,6 +3,7 @@ import { useMutation } from "@apollo/client";
 import Auth from "../../utils/auth";
 import { SAVE_MOOD } from "../../utils/mutations";
 import { saveMoodIds, getSavedMoodIds } from "../../utils/localStorage";
+import styles from "./styles.module.css";
 
 const obj = [
 	{
@@ -57,6 +58,14 @@ const QuestionComponentAnxiousness = ({ data, event, moodId }) => {
 	// get token
 	const token = Auth.loggedIn() ? Auth.getToken() : null;
 
+	const values = [0, 1, 2, 3];
+	const values2 = ["zero", "one", "two", "three"];
+	const mapping = () => {
+		values2.map((values) => {
+			return <p>{values}</p>;
+		});
+	};
+
 	// useEffect(() => {
 	// 	return () => saveMoodIds(savedMoodIds);
 	// });
@@ -88,18 +97,17 @@ const QuestionComponentAnxiousness = ({ data, event, moodId }) => {
 			<div className="grid gap-4">
 				<h3 className="text-md">{data.question ?? ""}</h3>
 				<h3>Please enter between 0-3 for how much this applied to you today</h3>
-				<div className="input-group">
-					<input type="text" placeholder="Amount" className="form-inputmt-1 block w-full py-2.5 px-3 border border-gray-200 bg-white rounded-md focus:outline-none focus:ring-indigo-500 sm:text-sm" />
-				</div>
-
-				<div className="submit-btn">
-					<button
-						className="border py-2 text-white bg-green-500 w-full btn-block btn-info"
-						disabled={savedMoodIds?.some((savedMoodId) => savedMoodId === moodId)}
-						//onClick={() => handleSaveMood(mood.moodId)}
-					>
-						{savedMoodIds?.some((savedMoodId) => savedMoodId === moodId) ? "This mood has already been saved!" : "Save your mood"}
-					</button>
+				<div className={styles.submit_btn}>
+					{values.map((value) => (
+						<button
+							className={styles.button}
+							disabled={savedMoodIds?.some((savedMoodId) => savedMoodId === moodId)}
+							onClick={mapping()}
+							//onClick={() => handleSaveMood(mood.moodId)}
+						>
+							{savedMoodIds?.some((savedMoodId) => savedMoodId === moodId) ? "This mood has already been saved!" : value}
+						</button>
+					))}
 				</div>
 			</div>
 		</form>
