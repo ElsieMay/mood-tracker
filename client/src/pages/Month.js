@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar/index";
 import { Sidebar } from "../components/Sidebar";
-import { Hero } from "../components/HomePage";
+import MonthPage from "../components/Month";
 import styled from "styled-components";
 
 const Month = () => {
@@ -21,8 +21,8 @@ const Month = () => {
 			<Sidebar isOpen={isOpen} toggle={toggle} />
 			<Wrapper>
 				<Navbar toggle={toggle} />
-				<Hero />
 			</Wrapper>
+			<MonthPage></MonthPage>
 		</div>
 	);
 };
