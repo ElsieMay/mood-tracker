@@ -1,6 +1,6 @@
 import styles from "./styles.module.css";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../utils/mutations";
 import Auth from "../../utils/auth";
@@ -74,11 +74,11 @@ const Login = () => {
 					</div>
 					<div className={styles.right}>
 						<h1>New Here ?</h1>
-						<Link to="/signup">
+						<NavLink to="/mood-tracker/signup">
 							<button type="button" className={styles.white_btn}>
 								Sign Up
 							</button>
-						</Link>
+						</NavLink>
 					</div>
 				</div>
 			</div>
