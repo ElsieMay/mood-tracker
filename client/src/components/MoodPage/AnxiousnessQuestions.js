@@ -4,6 +4,8 @@ import Auth from "../../utils/auth";
 import { SAVE_MOOD } from "../../utils/mutations";
 import { saveMoodIds, getSavedMoodIds } from "../../utils/localStorage";
 import styles from "./styles.module.css";
+import { removeMoodId } from "../../utils/localStorage";
+import { REMOVE_MOOD } from "../../utils/mutations";
 
 const obj = [
 	{
@@ -55,6 +57,8 @@ const QuestionComponentAnxiousness = ({ data, event, moodId }) => {
 	const [savedMoodIds, setSavedMoodIds] = useState(getSavedMoodIds());
 	//mutation
 	const [saveMood, err] = useMutation(SAVE_MOOD);
+
+	const [removeMood] = useMutation(REMOVE_MOOD);
 	// get token
 	const token = Auth.loggedIn() ? Auth.getToken() : null;
 
@@ -89,6 +93,24 @@ const QuestionComponentAnxiousness = ({ data, event, moodId }) => {
 			setSavedMoodIds([...savedMoodIds, savedMoodId.moodId]);
 		} catch (err) {
 			// console.log(err);
+		}
+	};
+
+	const handleRemoveMood = async (moodId) => {
+		const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+		if (!token) {
+			return false;
+		}
+
+		try {
+			const { data } = await removeMood({
+				variables: { moodId },
+			});
+			// upon success, remove book's id from localStorage
+			removeMoodId(moodId);
+		} catch (err) {
+			console.error(err);
 		}
 	};
 

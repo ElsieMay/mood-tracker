@@ -4,6 +4,8 @@ import Auth from "../../utils/auth";
 import { SAVE_MOOD } from "../../utils/mutations";
 import { saveMoodIds, getSavedMoodIds } from "../../utils/localStorage";
 import styles from "./styles.module.css";
+import { removeMoodId } from "../../utils/localStorage";
+import { REMOVE_MOOD } from "../../utils/mutations";
 
 const obj = [
 	{
@@ -57,14 +59,6 @@ const QuestionComponentLow = ({ data, event, moodId }) => {
 	console.log(data);
 	// console.log(data.valueId);
 
-	const values = [0, 1, 2, 3];
-	const values2 = ["zero", "one", "two", "three"];
-	const mapping = () => {
-		values2.map((values) => {
-			return <p>{values}</p>;
-		});
-	};
-
 	// event.preventDefault();
 	// export const QuestionComponentLow = ({ data }) => {
 	// const { register, handleSubmit, resetField } = useForm();
@@ -78,6 +72,7 @@ const QuestionComponentLow = ({ data, event, moodId }) => {
 	// get token
 	const token = Auth.loggedIn() ? Auth.getToken() : null;
 
+	const [removeMood] = useMutation(REMOVE_MOOD);
 	// console.log(state);
 	// useEffect(() => {
 	// 	return () => saveMoodIds(savedMoodIds);
@@ -86,6 +81,14 @@ const QuestionComponentLow = ({ data, event, moodId }) => {
 	// if (!token) {
 	// 	return false;
 	// }
+
+	const values = [0, 1, 2, 3];
+	const values2 = ["zero", "one", "two", "three"];
+	const mapping = () => {
+		values2.map((values) => {
+			return <p>{values}</p>;
+		});
+	};
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
@@ -102,6 +105,24 @@ const QuestionComponentLow = ({ data, event, moodId }) => {
 			setSavedMoodIds([...savedMoodIds, savedMoodId.moodId]);
 		} catch (err) {
 			// console.log(err);
+		}
+	};
+
+	const handleRemoveMood = async (moodId) => {
+		const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+		if (!token) {
+			return false;
+		}
+
+		try {
+			const { data } = await removeMood({
+				variables: { moodId },
+			});
+			// upon success, remove book's id from localStorage
+			removeMoodId(moodId);
+		} catch (err) {
+			console.error(err);
 		}
 	};
 
