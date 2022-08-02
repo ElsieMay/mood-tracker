@@ -2,6 +2,8 @@ import React from "react";
 import { Line } from "react-chartjs-2";
 import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, PointElement, LineElement } from "chart.js";
 import { Labels } from "./Labels";
+import styles from "./styles.module.css";
+import { graphQLResultHasError } from "@apollo/client/utilities";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, PointElement, LineElement);
 
@@ -10,7 +12,7 @@ const data = {
 	datasets: [
 		{
 			label: "Low Mood",
-			data: [33, 53, 85, 41, 53, 85, 41],
+			data: [33, 53, 35, 41, 53, 85, 41],
 			fill: true,
 			borderColor: "rgba(177, 185, 91, 1)",
 		},
@@ -25,9 +27,11 @@ const data = {
 
 export default function App() {
 	return (
-		<div className="App">
+		<div className="week-graph">
 			<Line data={data} />
-			<Labels />
+			<div className={styles.labels}>
+				<Labels />
+			</div>
 		</div>
 	);
 }
