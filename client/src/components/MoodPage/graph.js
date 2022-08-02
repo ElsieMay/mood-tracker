@@ -7,12 +7,23 @@ ChartJS.register(CategoryScale, LinearScale, BarElement);
 
 const Graph = ({ savedMoods }) => {
 	console.log("this is saved moods from graph.js", savedMoods);
+	const anxiousMoods = savedMoods.filter((x) => x.type === "anxious");
+	const lowMoods = savedMoods.filter((x) => x.type === "low");
+
+	const anxiousTotal = anxiousMoods.map((x) => x.value).reduce((a, b) => a + b, 0);
+	const lowTotal = lowMoods.map((x) => x.value).reduce((a, b) => a + b, 0);
+	console.log({
+		anxiousMoods,
+		anxiousTotal,
+		lowMoods,
+		lowTotal,
+	});
 	var data = {
 		labels: ["Low Mood", "Anxiousness"],
 		datasets: [
 			{
 				label: "# of Votes",
-				data: [12, 30], //pass prop or usecontext from question. Spreading prop passed moodvalue
+				data: [lowTotal, anxiousTotal], //pass prop or usecontext from question. Spreading prop passed moodvalue
 				options: { tension: 0.0, bezierCurve: false },
 				borderWidth: 1,
 				tension: 0.25,

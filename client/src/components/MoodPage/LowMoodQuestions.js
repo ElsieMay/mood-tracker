@@ -7,6 +7,7 @@ import styles from "./styles.module.css";
 import { removeMoodId } from "../../utils/localStorage";
 import { REMOVE_MOOD } from "../../utils/mutations";
 import { FaSave } from "react-icons/fa";
+import { Graph } from "./graph";
 
 const obj = [
 	{
@@ -56,7 +57,7 @@ export const LowMoodForm = () => {
 	);
 };
 
-const QuestionComponentLow = ({ data, event, moodId }) => {
+export const QuestionComponentLow = ({ data, event, moodId }) => {
 	console.log(data);
 	// console.log(data.valueId);
 
