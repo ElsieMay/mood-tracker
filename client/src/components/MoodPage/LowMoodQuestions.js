@@ -84,12 +84,6 @@ const QuestionComponentLow = ({ data, event, moodId }) => {
 	// }
 
 	const values = [0, 1, 2, 3];
-	const values2 = ["zero", "one", "two", "three"];
-	const mapping = () => {
-		values2.map((values) => {
-			return <p>{values}</p>;
-		});
-	};
 
 	const fontStyles = { color: "#e1b37f", fontSize: "40px", margin: "15" };
 
@@ -139,7 +133,6 @@ const QuestionComponentLow = ({ data, event, moodId }) => {
 						<button
 							className={styles.value_button}
 							disabled={savedMoodIds?.some((savedMoodId) => savedMoodId === moodId)}
-							onClick={mapping()}
 							//onClick={() => handleSaveMood(mood.moodId)}
 						>
 							{savedMoodIds?.some((savedMoodId) => savedMoodId === moodId) ? "This mood has already been saved!" : value}

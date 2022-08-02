@@ -1,6 +1,6 @@
 import styles from "./styles.module.css";
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../../utils/mutations";
 import Auth from "../../utils/auth";
@@ -25,8 +25,6 @@ const Signup = () => {
 	//mutation
 	const [addUser] = useMutation(ADD_USER);
 
-	const navigate = useNavigate();
-
 	const handleInputChange = (event) => {
 		const { name, value } = event.target;
 		setUserFormData({ ...userFormData, [name]: value });
@@ -40,7 +38,6 @@ const Signup = () => {
 				variables: { ...userFormData },
 			});
 			Auth.login(data.addUser.token);
-			navigate("http://localhost:3002/mood-tracker/login");
 		} catch (error) {
 			if (error.response && error.response.status >= 400 && error.response.status <= 500) {
 				setError(error.response.userFormData.message);
@@ -67,11 +64,11 @@ const Signup = () => {
 				<div className={styles.signup_form_container}>
 					<div className={styles.left}>
 						<h1>Welcome Back</h1>
-						<Link to="mood-tracker/login">
+						<NavLink to="/mood-tracker/login">
 							<button type="button" className={styles.white_btn}>
 								Login
 							</button>
-						</Link>
+						</NavLink>
 					</div>
 					<div className={styles.right}>
 						<form className={styles.form_container} noValidate validated={validated} onSubmit={handleFormSubmit}>
