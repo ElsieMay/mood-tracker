@@ -8,7 +8,7 @@ import { graphQLResultHasError } from "@apollo/client/utilities";
 ChartJS.register(CategoryScale, LinearScale, BarElement, PointElement, LineElement);
 
 const data = {
-	labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+	labels: ["Date", "Date", "Date", "Date", "Date", "Date", "Date"],
 	datasets: [
 		{
 			label: "Low Mood",

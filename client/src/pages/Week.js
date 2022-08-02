@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar/index";
 import { Sidebar } from "../components/Sidebar";
-import MonthPage from "../components/Month";
+import WeekPage from "../components/Week";
 import styled from "styled-components";
 
-const Month = () => {
+const Week = () => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	const toggle = () => {
@@ -22,9 +22,9 @@ const Month = () => {
 			<Wrapper>
 				<Navbar toggle={toggle} />
 			</Wrapper>
-			<MonthPage></MonthPage>
+			<WeekPage></WeekPage>
 		</div>
 	);
 };
 
-export default Month;
+export default Week;

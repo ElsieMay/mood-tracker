@@ -19,7 +19,7 @@ const Navbar = ({ toggle }) => {
 							<NavLinks to="/mood-tracker/mood">My Mood</NavLinks>
 						</NavItem>
 						<NavItem>
-							<NavLinks to="/mood-tracker/month">My Month</NavLinks>
+							<NavLinks to="/mood-tracker/week">My Week</NavLinks>
 						</NavItem>
 						<NavItem>
 							<NavLinks to="/mood-tracker/services">Services</NavLinks>

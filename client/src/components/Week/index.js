@@ -3,7 +3,7 @@ import Graph from "./Graph";
 import { useQuery } from "@apollo/client";
 import { GET_MY_MOOD } from "../../utils/queries";
 
-const MonthPage = () => {
+const WeekPage = () => {
 	const { loading, data } = useQuery(GET_MY_MOOD);
 	console.log(data);
 
@@ -19,4 +19,4 @@ const MonthPage = () => {
 	);
 };
 
-export default MonthPage;
+export default WeekPage;

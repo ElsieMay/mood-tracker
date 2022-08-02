@@ -10,7 +10,7 @@ export const Sidebar = ({ isOpen, toggle }) => {
 			<SidebarWrapper>
 				<SidebarMenu>
 					<SidebarLink to="/mood-tracker/mood">My Mood</SidebarLink>
-					<SidebarLink to="/mood-tracker/month">My Month</SidebarLink>
+					<SidebarLink to="/mood-tracker/week">My Week</SidebarLink>
 					<SidebarLink to="/mood-tracker/services">Services</SidebarLink>
 					<SideBtnWrap>
 						<SidebarRoute to="/mood-tracker/login">Login</SidebarRoute>

@@ -6,7 +6,7 @@ import Home from "./pages/index";
 import SignUp from "./components/SignUp/index";
 import Login from "./components/Login/index";
 import Mood from "./pages/Mood";
-import Month from "./pages/Month";
+import Week from "./pages/Week";
 import Services from "./pages/Services";
 
 const httpLink = createHttpLink({
@@ -43,7 +43,7 @@ function App() {
 						<Route path="/mood-tracker/signup" element={<SignUp />} />
 						<Route path="/mood-tracker/login" element={<Login />} />
 						<Route path="/mood-tracker/mood" element={<Mood />} />
-						<Route path="/mood-tracker/month" element={<Month />} />
+						<Route path="/mood-tracker/week" element={<Week />} />
 						<Route path="/mood-tracker/services" element={<Services />} />
 						<Route path="*" element={<h1 className="display-2">Wrong page!</h1>} />
 					</Routes>
