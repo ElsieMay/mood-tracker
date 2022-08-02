@@ -5,13 +5,14 @@ import { Labels } from "./Labels";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement);
 
-const Graph = () => {
+const Graph = ({ savedMoods }) => {
+	console.log("this is saved moods from graph.js", savedMoods);
 	var data = {
 		labels: ["Low Mood", "Anxiousness"],
 		datasets: [
 			{
 				label: "# of Votes",
-				data: [12, 19],
+				data: [12, 30],
 				options: { tension: 0.0, bezierCurve: false },
 				borderWidth: 1,
 				tension: 0.25,

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
 import { useMutation } from "@apollo/client";
 import Auth from "../../utils/auth";
 import { SAVE_MOOD } from "../../utils/mutations";
@@ -7,26 +6,30 @@ import { saveMoodIds, getSavedMoodIds } from "../../utils/localStorage";
 
 const obj = [
 	{
+		moodId: "Q1",
 		question: "Have you had an anxiety attack (suddenly feeling fear or panic)?",
 	},
 	{
+		moodId: "Q2",
 		question: "How often have you been bothered by feeling nervous, anxious or on edge?",
 	},
 	{
+		moodId: "Q3",
 		question: "How often have you been bothered by not being able to stop or control worrying?",
 	},
 	{
+		moodId: "Q4",
 		question: "How often have you been bothered by worrying too much about different things?",
 	},
 	{
+		moodId: "Q5",
 		question: "How often have you been bothered by feeling nervous, anxious or on edge?",
 	},
 	{
+		moodId: "Q6",
 		question: "How often have you been bothered by not being able to stop or control worrying?",
 	},
-	{
-		question: "How often have you been bothered by having trouble relaxing?",
-	},
+	{ moodId: "Q7", question: "How often have you been bothered by having trouble relaxing?" },
 ];
 
 export const AnxiousnessForm = () => {
@@ -40,6 +43,7 @@ export const AnxiousnessForm = () => {
 };
 
 const QuestionComponentAnxiousness = ({ data, event, moodId }) => {
+	console.log(data);
 	// event.preventDefault();
 	// export const QuestionComponentLow = ({ data }) => {
 	// const { register, handleSubmit, resetField } = useForm();
@@ -53,9 +57,9 @@ const QuestionComponentAnxiousness = ({ data, event, moodId }) => {
 	// get token
 	const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-	useEffect(() => {
-		return () => saveMoodIds(savedMoodIds);
-	});
+	// useEffect(() => {
+	// 	return () => saveMoodIds(savedMoodIds);
+	// });
 
 	// if (!token) {
 	// 	return false;
@@ -66,7 +70,11 @@ const QuestionComponentAnxiousness = ({ data, event, moodId }) => {
 		try {
 			const { data } = await saveMood({
 				variables: {
-					input: { ...savedMoodId },
+					input: {
+						moodId: data.moodId,
+						value: 3, // TODO: elsie to get the actual value from the form
+						type: "anxious",
+					},
 				},
 			});
 			setSavedMoodIds([...savedMoodIds, savedMoodId.moodId]);

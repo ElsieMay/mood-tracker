@@ -1,8 +1,7 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
 
-const lowSchema = require("./Mood");
-const anxiousnessSchema = require("./Mood");
+const moodSchema = require("./Mood");
 
 const userSchema = new Schema(
 	{
@@ -22,7 +21,7 @@ const userSchema = new Schema(
 			required: [true, "Please add a password"],
 		},
 
-		savedMoods: [lowSchema, anxiousnessSchema],
+		savedMoods: [moodSchema],
 	},
 
 	{

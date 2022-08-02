@@ -39,7 +39,7 @@ const resolvers = {
 			return { token, user };
 		},
 		saveMood: async (parent, { input }, context) => {
-			console.log(context);
+			console.log(input);
 			if (context.user) {
 				const updatedUser = await User.findOneAndUpdate({ _id: context.user._id }, { $addToSet: { savedMoods: input } }, { new: true, runValidators: true });
 				return updatedUser;

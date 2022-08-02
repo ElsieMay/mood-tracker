@@ -14,10 +14,10 @@ const typeDefs = gql`
 		email: String
 		savedMoods: [Mood]
 	}
-	input savedMood {
+	input saveMoodInput {
+		type: String
 		moodId: String
-		description: String
-		title: String
+		value: Int
 	}
 	type Query {
 		me: User
@@ -30,7 +30,7 @@ const typeDefs = gql`
 	type Mutation {
 		addUser(username: String!, email: String!, password: String!): Auth
 		login(email: String!, password: String!): Auth
-		saveMood(input: savedMood): User
+		saveMood(input: saveMoodInput): User
 		deleteMood(moodId: ID!): User
 	}
 `;
