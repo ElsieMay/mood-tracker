@@ -20,9 +20,9 @@ export const ADD_USER = gql`
 				email
 				moodCount
 				savedMoods {
+					type
 					moodId
-					title
-					description
+					value
 				}
 			}
 			token
@@ -52,9 +52,10 @@ export const REMOVE_MOOD = gql`
 			email
 			moodCount
 			savedMoods {
+				_id
+				type
 				moodId
-				title
-				description
+				value
 			}
 		}
 	}

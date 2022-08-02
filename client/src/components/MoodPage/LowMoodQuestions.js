@@ -82,26 +82,36 @@ const QuestionComponentLow = ({ data, event, moodId }) => {
 	// if (!token) {
 	// 	return false;
 	// }
-
+	const [moodValue, setMoodValue] = useState([]);
 	const values = [0, 1, 2, 3];
 
 	const fontStyles = { color: "#e1b37f", fontSize: "40px", margin: "15" };
 
-	const handleSubmit = async (event) => {
+	const newHandleSubmit = async (event) => {
 		event.preventDefault();
+	};
+
+	const handleSubmit = async (event) => {
+		// event.preventDefault();
+		console.log("EVENT!!!!", event.target.value);
 		try {
-			const { data } = await saveMood({
+			const { moodData } = await saveMood({
 				variables: {
 					input: {
 						moodId: data.moodId,
-						value: 3, // TODO: elsie to get the actual value from the form
+						value: parseInt(event.target.value), // TODO: elsie to get the actual value from the form
 						type: "low",
 					},
 				},
 			});
-			setSavedMoodIds([...savedMoodIds, savedMoodId.moodId]);
+
+			console.log("THIS IS DATA", data);
+			setSavedMoodIds([...savedMoodIds, data.moodId]);
+			setMoodValue([...moodValue, parseInt(event.target.value)]);
+			console.log("found mood", saveMood);
+			console.log("mood value", moodValue);
 		} catch (err) {
-			// console.log(err);
+			console.log(err);
 		}
 	};
 
@@ -124,17 +134,13 @@ const QuestionComponentLow = ({ data, event, moodId }) => {
 	};
 
 	return (
-		<form id="form" onSubmit={handleSubmit}>
+		<form id="form" onSubmit={newHandleSubmit}>
 			<div className="grid gap-4">
 				<h3 className="text-md">{data.question ?? ""}</h3>
 				<h3>Please enter between 0-3 for how much this applied to you today</h3>
 				<div className={styles.submit_btn}>
 					{values.map((value) => (
-						<button
-							className={styles.value_button}
-							disabled={savedMoodIds?.some((savedMoodId) => savedMoodId === moodId)}
-							//onClick={() => handleSaveMood(mood.moodId)}
-						>
+						<button key={value._id} value={value} className={styles.value_button} disabled={savedMoodIds?.some((savedMoodId) => savedMoodId === moodId)} onClick={(e) => handleSubmit(e)}>
 							{savedMoodIds?.some((savedMoodId) => savedMoodId === moodId) ? "This mood has already been saved!" : value}
 						</button>
 					))}

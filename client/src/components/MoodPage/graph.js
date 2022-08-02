@@ -12,7 +12,7 @@ const Graph = ({ savedMoods }) => {
 		datasets: [
 			{
 				label: "# of Votes",
-				data: [12, 30],
+				data: [12, 30], //pass prop or usecontext from question. Spreading prop passed moodvalue
 				options: { tension: 0.0, bezierCurve: false },
 				borderWidth: 1,
 				tension: 0.25,
