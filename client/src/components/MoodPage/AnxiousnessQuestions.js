@@ -6,6 +6,7 @@ import { saveMoodIds, getSavedMoodIds } from "../../utils/localStorage";
 import styles from "./styles.module.css";
 import { removeMoodId } from "../../utils/localStorage";
 import { REMOVE_MOOD } from "../../utils/mutations";
+import { FaSave } from "react-icons/fa";
 
 const obj = [
 	{
@@ -70,6 +71,7 @@ const QuestionComponentAnxiousness = ({ data, event, moodId }) => {
 		});
 	};
 
+	const fontStyles = { color: "#e1b37f", fontSize: "40px", margin: "15" };
 	// useEffect(() => {
 	// 	return () => saveMoodIds(savedMoodIds);
 	// });
@@ -131,7 +133,8 @@ const QuestionComponentAnxiousness = ({ data, event, moodId }) => {
 						</button>
 					))}
 				</div>
-				<button className="btn-block btn-danger" onClick={() => handleRemoveMood(data.moodId)}>
+				<button className={styles.delete_button} onClick={() => handleRemoveMood(data.me.moodId)}>
+					<FaSave style={fontStyles} />
 					Undo your selection
 				</button>
 			</div>

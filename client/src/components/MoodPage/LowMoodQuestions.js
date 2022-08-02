@@ -91,7 +91,7 @@ const QuestionComponentLow = ({ data, event, moodId }) => {
 		});
 	};
 
-	const fontStyles = { color: "blue", fontSize: "80px" };
+	const fontStyles = { color: "#e1b37f", fontSize: "40px", margin: "15" };
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
@@ -146,7 +146,7 @@ const QuestionComponentLow = ({ data, event, moodId }) => {
 						</button>
 					))}
 				</div>
-				<button className="delete-button" onClick={() => handleRemoveMood(data.moodId)}>
+				<button className={styles.delete_button} onClick={() => handleRemoveMood(data.me.moodId)}>
 					<FaSave style={fontStyles} />
 					Undo your selection
 				</button>

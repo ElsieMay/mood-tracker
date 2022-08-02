@@ -1,11 +1,10 @@
 .submit_btn {
 	display: flex;
 	justify-content: space-around;
-	margin: 10px;
 }
 
 .value_button {
-	border-radius: 30px;
+	border-radius: 20px;
 	width: 60px;
 	background: #d6de88;
 	white-space: nowrap;
@@ -17,21 +16,12 @@
 	cursor: pointer;
 	transition: all 0.2s ease-in-out;
 	text-decoration: none;
-	margin: 15px;
+	padding: 15px;
 }
 
-.delete-button {
-	border-radius: 30px;
-	width: 60px;
-	background: #d6de88;
-	white-space: nowrap;
-	padding: 10px 22px;
-	color: #37704f;
-	font-size: 16px;
-	outline: none;
-	border: none;
-	cursor: pointer;
-	transition: all 0.2s ease-in-out;
-	text-decoration: none;
-	margin: 15px;
+.delete_button {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
