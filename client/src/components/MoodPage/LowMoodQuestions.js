@@ -6,6 +6,7 @@ import { saveMoodIds, getSavedMoodIds } from "../../utils/localStorage";
 import styles from "./styles.module.css";
 import { removeMoodId } from "../../utils/localStorage";
 import { REMOVE_MOOD } from "../../utils/mutations";
+import { FaSave } from "react-icons/fa";
 
 const obj = [
 	{
@@ -90,6 +91,8 @@ const QuestionComponentLow = ({ data, event, moodId }) => {
 		});
 	};
 
+	const fontStyles = { color: "blue", fontSize: "80px" };
+
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 		try {
@@ -134,7 +137,7 @@ const QuestionComponentLow = ({ data, event, moodId }) => {
 				<div className={styles.submit_btn}>
 					{values.map((value) => (
 						<button
-							className={styles.button}
+							className={styles.value_button}
 							disabled={savedMoodIds?.some((savedMoodId) => savedMoodId === moodId)}
 							onClick={mapping()}
 							//onClick={() => handleSaveMood(mood.moodId)}
@@ -143,7 +146,13 @@ const QuestionComponentLow = ({ data, event, moodId }) => {
 						</button>
 					))}
 				</div>
+				<button className="delete-button" onClick={() => handleRemoveMood(data.moodId)}>
+					<FaSave style={fontStyles} />
+					Undo your selection
+				</button>
 			</div>
+			<br />
+			<br />
 		</form>
 	);
 };

@@ -122,7 +122,7 @@ const QuestionComponentAnxiousness = ({ data, event, moodId }) => {
 				<div className={styles.submit_btn}>
 					{values.map((value) => (
 						<button
-							className={styles.button}
+							className={styles.value_button}
 							disabled={savedMoodIds?.some((savedMoodId) => savedMoodId === moodId)}
 							onClick={mapping()}
 							//onClick={() => handleSaveMood(mood.moodId)}
@@ -131,7 +131,12 @@ const QuestionComponentAnxiousness = ({ data, event, moodId }) => {
 						</button>
 					))}
 				</div>
+				<button className="btn-block btn-danger" onClick={() => handleRemoveMood(data.moodId)}>
+					Undo your selection
+				</button>
 			</div>
+			<br />
+			<br />
 		</form>
 	);
 };
