@@ -7,7 +7,6 @@ import styles from "./styles.module.css";
 import { removeMoodId } from "../../utils/localStorage";
 import { REMOVE_MOOD } from "../../utils/mutations";
 import { FaSave } from "react-icons/fa";
-import { Graph } from "./graph";
 
 const obj = [
 	{
@@ -100,7 +99,7 @@ export const QuestionComponentLow = ({ data, event, moodId }) => {
 				variables: {
 					input: {
 						moodId: data.moodId,
-						value: parseInt(event.target.value), // TODO: elsie to get the actual value from the form
+						value: parseInt(event.target.value),
 						type: "low",
 					},
 				},

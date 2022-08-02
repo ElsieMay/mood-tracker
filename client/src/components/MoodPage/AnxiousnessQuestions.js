@@ -51,27 +51,17 @@ const QuestionComponentAnxiousness = ({ data, event, moodId }) => {
 	// event.preventDefault();
 	// export const QuestionComponentLow = ({ data }) => {
 	// const { register, handleSubmit, resetField } = useForm();
-
 	const [searchedMoods, setSearchedMoods] = useState([]);
 	const savedMoodId = searchedMoods.find((mood) => mood.moodId === moodId);
 	// create state to hold saved moodId values
 	const [savedMoodIds, setSavedMoodIds] = useState(getSavedMoodIds());
 	//mutation
 	const [saveMood, err] = useMutation(SAVE_MOOD);
-
-	const [removeMood] = useMutation(REMOVE_MOOD);
 	// get token
 	const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-	const values = [0, 1, 2, 3];
-	const values2 = ["zero", "one", "two", "three"];
-	const mapping = () => {
-		values2.map((values) => {
-			return <p>{values}</p>;
-		});
-	};
-
-	const fontStyles = { color: "#e1b37f", fontSize: "40px", margin: "15" };
+	const [removeMood] = useMutation(REMOVE_MOOD);
+	// console.log(state);
 	// useEffect(() => {
 	// 	return () => saveMoodIds(savedMoodIds);
 	// });
@@ -79,22 +69,36 @@ const QuestionComponentAnxiousness = ({ data, event, moodId }) => {
 	// if (!token) {
 	// 	return false;
 	// }
+	const [moodValue, setMoodValue] = useState([]);
+	const values = [0, 1, 2, 3];
+
+	const fontStyles = { color: "#e1b37f", fontSize: "40px", margin: "15" };
+
+	const newHandleSubmit = async (event) => {
+		event.preventDefault();
+	};
 
 	const handleSubmit = async (event) => {
-		event.preventDefault();
+		// event.preventDefault();
+		console.log("EVENT!!!!", event.target.value);
 		try {
-			const { data } = await saveMood({
+			const { moodData } = await saveMood({
 				variables: {
 					input: {
 						moodId: data.moodId,
-						value: 3, // TODO: elsie to get the actual value from the form
+						value: parseInt(event.target.value),
 						type: "anxious",
 					},
 				},
 			});
-			setSavedMoodIds([...savedMoodIds, savedMoodId.moodId]);
+
+			console.log("THIS IS DATA", data);
+			setSavedMoodIds([...savedMoodIds, data.moodId]);
+			setMoodValue([...moodValue, parseInt(event.target.value)]);
+			console.log("found mood", saveMood);
+			console.log("mood value", moodValue);
 		} catch (err) {
-			// console.log(err);
+			console.log(err);
 		}
 	};
 
@@ -117,18 +121,13 @@ const QuestionComponentAnxiousness = ({ data, event, moodId }) => {
 	};
 
 	return (
-		<form id="form" onSubmit={handleSubmit}>
+		<form id="form" onSubmit={newHandleSubmit}>
 			<div className="grid gap-4">
 				<h3 className="text-md">{data.question ?? ""}</h3>
 				<h3>Please enter between 0-3 for how much this applied to you today</h3>
 				<div className={styles.submit_btn}>
 					{values.map((value) => (
-						<button
-							className={styles.value_button}
-							disabled={savedMoodIds?.some((savedMoodId) => savedMoodId === moodId)}
-							onClick={mapping()}
-							//onClick={() => handleSaveMood(mood.moodId)}
-						>
+						<button key={value._id} value={value} className={styles.value_button} disabled={savedMoodIds?.some((savedMoodId) => savedMoodId === moodId)} onClick={(e) => handleSubmit(e)}>
 							{savedMoodIds?.some((savedMoodId) => savedMoodId === moodId) ? "This mood has already been saved!" : value}
 						</button>
 					))}
