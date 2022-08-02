@@ -6,17 +6,17 @@ import { Labels } from "./Labels";
 ChartJS.register(CategoryScale, LinearScale, BarElement, PointElement, LineElement);
 
 const data = {
-	labels: ["Week One", "Week Two", "Week Three", "Week Four"],
+	labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
 	datasets: [
 		{
 			label: "Low Mood",
-			data: [33, 53, 85, 41],
+			data: [33, 53, 85, 41, 53, 85, 41],
 			fill: true,
 			borderColor: "rgba(177, 185, 91, 1)",
 		},
 		{
 			label: "Anxiousness",
-			data: [33, 25, 35, 51],
+			data: [33, 25, 35, 51, 13, 35, 40],
 			fill: false,
 			borderColor: "#e1b37f",
 		},
