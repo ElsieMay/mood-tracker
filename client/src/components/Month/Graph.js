@@ -1,58 +1,33 @@
 import React from "react";
-import { Bar } from "react-chartjs-2";
-import { Chart as ChartJS, BarElement, CategoryScale, LinearScale } from "chart.js";
+import { Line } from "react-chartjs-2";
+import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, PointElement, LineElement } from "chart.js";
 import { Labels } from "./Labels";
 
-ChartJS.register(CategoryScale, LinearScale, BarElement);
+ChartJS.register(CategoryScale, LinearScale, BarElement, PointElement, LineElement);
 
-const Graph = ({ savedMoods }) => {
-	console.log("this is saved moods from graph.js", savedMoods);
-	var data = {
-		labels: ["Low Mood", "Anxiousness"],
-		datasets: [
-			{
-				label: "# of Votes",
-				data: [12, 30],
-				options: { tension: 0.0, bezierCurve: false },
-				borderWidth: 1,
-				tension: 0.25,
-				backgroundColor: ["rgba(204, 204, 153, 0.2)", "rgba(204, 153, 102, 0.2)"],
-				borderColor: ["rgba(177, 185, 91, 1)", "rgba(194, 154, 108, 1)"],
-				hoverOffset: 4,
-				borderRadius: 10,
-				borderWidth: 1,
-				spacing: 10,
-			},
-		],
-		options: {
-			tension: 1,
-			scaleBeginAtZero: true,
-			scaleStartValue: 0,
-			scales: {
-				yAxes: [
-					{
-						ticks: {
-							beginAtZero: true,
-						},
-					},
-				],
-			},
+const data = {
+	labels: ["Week One", "Week Two", "Week Three", "Week Four"],
+	datasets: [
+		{
+			label: "Low Mood",
+			data: [33, 53, 85, 41],
+			fill: true,
+			borderColor: "rgba(177, 185, 91, 1)",
 		},
-	};
-	return (
-		<>
-			<div className="flex justify-content max-w-xs mx-auto">
-				<div className="item">
-					<div className="chart relative">
-						<Bar data={data} width={300} height={450} />
-					</div>
-					<div className="flex flex-col py-10 gap-4">
-						<Labels></Labels>
-					</div>
-				</div>
-			</div>
-		</>
-	);
+		{
+			label: "Anxiousness",
+			data: [33, 25, 35, 51],
+			fill: false,
+			borderColor: "#e1b37f",
+		},
+	],
 };
 
-export default Graph;
+export default function App() {
+	return (
+		<div className="App">
+			<Line data={data} />
+			<Labels />
+		</div>
+	);
+}
