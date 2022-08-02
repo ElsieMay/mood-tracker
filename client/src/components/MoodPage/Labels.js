@@ -5,12 +5,10 @@ const obj = [
 	{
 		type: "Anxiousness",
 		color: "#e1b37f",
-		percent: 30,
 	},
 	{
 		type: "Low Mood",
 		color: "#d6de88",
-		percent: 80,
 	},
 ];
 
@@ -34,7 +32,7 @@ function LabelComponent({ data }) {
 				<div className="w-2 h-2 rounded py-3" style={{ background: data.color ?? "#d6de88" }}></div>
 				<h3 className="text-md">{data.type ?? ""}</h3>
 			</div>
-			<h3 className="font-bold">{data.percent ?? 0}%</h3>
+			{/* <h3 className="font-bold">{data.percent ?? 0}%</h3> */}
 		</div>
 	);
 }

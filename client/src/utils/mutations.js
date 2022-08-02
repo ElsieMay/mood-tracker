@@ -30,7 +30,7 @@ export const ADD_USER = gql`
 	}
 `;
 export const SAVE_MOOD = gql`
-	mutation saveMood($input: savedMood!) {
+	mutation saveMood($input: saveMoodInput!) {
 		saveMood(input: $input) {
 			_id
 			username
@@ -38,8 +38,8 @@ export const SAVE_MOOD = gql`
 			moodCount
 			savedMoods {
 				moodId
-				title
-				description
+				value
+				type
 			}
 		}
 	}

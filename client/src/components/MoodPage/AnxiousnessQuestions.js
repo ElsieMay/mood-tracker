@@ -1,32 +1,39 @@
 import React, { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
 import { useMutation } from "@apollo/client";
 import Auth from "../../utils/auth";
 import { SAVE_MOOD } from "../../utils/mutations";
 import { saveMoodIds, getSavedMoodIds } from "../../utils/localStorage";
+import styles from "./styles.module.css";
+import { removeMoodId } from "../../utils/localStorage";
+import { REMOVE_MOOD } from "../../utils/mutations";
+import { FaSave } from "react-icons/fa";
 
 const obj = [
 	{
+		moodId: "Q1",
 		question: "Have you had an anxiety attack (suddenly feeling fear or panic)?",
 	},
 	{
+		moodId: "Q2",
 		question: "How often have you been bothered by feeling nervous, anxious or on edge?",
 	},
 	{
+		moodId: "Q3",
 		question: "How often have you been bothered by not being able to stop or control worrying?",
 	},
 	{
+		moodId: "Q4",
 		question: "How often have you been bothered by worrying too much about different things?",
 	},
 	{
+		moodId: "Q5",
 		question: "How often have you been bothered by feeling nervous, anxious or on edge?",
 	},
 	{
+		moodId: "Q6",
 		question: "How often have you been bothered by not being able to stop or control worrying?",
 	},
-	{
-		question: "How often have you been bothered by having trouble relaxing?",
-	},
+	{ moodId: "Q7", question: "How often have you been bothered by having trouble relaxing?" },
 ];
 
 export const AnxiousnessForm = () => {
@@ -40,6 +47,7 @@ export const AnxiousnessForm = () => {
 };
 
 const QuestionComponentAnxiousness = ({ data, event, moodId }) => {
+	console.log(data);
 	// event.preventDefault();
 	// export const QuestionComponentLow = ({ data }) => {
 	// const { register, handleSubmit, resetField } = useForm();
@@ -50,12 +58,23 @@ const QuestionComponentAnxiousness = ({ data, event, moodId }) => {
 	const [savedMoodIds, setSavedMoodIds] = useState(getSavedMoodIds());
 	//mutation
 	const [saveMood, err] = useMutation(SAVE_MOOD);
+
+	const [removeMood] = useMutation(REMOVE_MOOD);
 	// get token
 	const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-	useEffect(() => {
-		return () => saveMoodIds(savedMoodIds);
-	});
+	const values = [0, 1, 2, 3];
+	const values2 = ["zero", "one", "two", "three"];
+	const mapping = () => {
+		values2.map((values) => {
+			return <p>{values}</p>;
+		});
+	};
+
+	const fontStyles = { color: "#e1b37f", fontSize: "40px", margin: "15" };
+	// useEffect(() => {
+	// 	return () => saveMoodIds(savedMoodIds);
+	// });
 
 	// if (!token) {
 	// 	return false;
@@ -66,7 +85,11 @@ const QuestionComponentAnxiousness = ({ data, event, moodId }) => {
 		try {
 			const { data } = await saveMood({
 				variables: {
-					input: { ...savedMoodId },
+					input: {
+						moodId: data.moodId,
+						value: 3, // TODO: elsie to get the actual value from the form
+						type: "anxious",
+					},
 				},
 			});
 			setSavedMoodIds([...savedMoodIds, savedMoodId.moodId]);
@@ -75,25 +98,48 @@ const QuestionComponentAnxiousness = ({ data, event, moodId }) => {
 		}
 	};
 
+	const handleRemoveMood = async (moodId) => {
+		const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+		if (!token) {
+			return false;
+		}
+
+		try {
+			const { data } = await removeMood({
+				variables: { moodId },
+			});
+			// upon success, remove book's id from localStorage
+			removeMoodId(moodId);
+		} catch (err) {
+			console.error(err);
+		}
+	};
+
 	return (
 		<form id="form" onSubmit={handleSubmit}>
 			<div className="grid gap-4">
 				<h3 className="text-md">{data.question ?? ""}</h3>
 				<h3>Please enter between 0-3 for how much this applied to you today</h3>
-				<div className="input-group">
-					<input type="text" placeholder="Amount" className="form-inputmt-1 block w-full py-2.5 px-3 border border-gray-200 bg-white rounded-md focus:outline-none focus:ring-indigo-500 sm:text-sm" />
+				<div className={styles.submit_btn}>
+					{values.map((value) => (
+						<button
+							className={styles.value_button}
+							disabled={savedMoodIds?.some((savedMoodId) => savedMoodId === moodId)}
+							onClick={mapping()}
+							//onClick={() => handleSaveMood(mood.moodId)}
+						>
+							{savedMoodIds?.some((savedMoodId) => savedMoodId === moodId) ? "This mood has already been saved!" : value}
+						</button>
+					))}
 				</div>
-
-				<div className="submit-btn">
-					<button
-						className="border py-2 text-white bg-green-500 w-full btn-block btn-info"
-						disabled={savedMoodIds?.some((savedMoodId) => savedMoodId === moodId)}
-						//onClick={() => handleSaveMood(mood.moodId)}
-					>
-						{savedMoodIds?.some((savedMoodId) => savedMoodId === moodId) ? "This mood has already been saved!" : "Save your mood"}
-					</button>
-				</div>
+				<button className={styles.delete_button} onClick={() => handleRemoveMood(data.me.moodId)}>
+					<FaSave style={fontStyles} />
+					Undo your selection
+				</button>
 			</div>
+			<br />
+			<br />
 		</form>
 	);
 };
