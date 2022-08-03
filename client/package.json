@@ -17,6 +17,7 @@
 		"axios": "^0.27.2",
 		"bootstrap": "^5.2.0",
 		"chart.js": "^3.8.2",
+		"date-fns": "^2.29.1",
 		"graphql": "^16.5.0",
 		"jwt-decode": "^3.1.2",
 		"lodash": "^4.17.21",
@@ -33,13 +34,31 @@
 		"react-scroll": "^1.8.7",
 		"sass": "^1.54.0",
 		"styled-components": "^5.3.5",
-		"web-vitals": "^2.1.4"
+		"typescript": "^4.7.4",
+		"web-vitals": "^2.1.4",
+		"@babel/core": "^7.15.0",
+		"@babel/plugin-transform-runtime": "^7.15.0",
+		"@babel/preset-env": "^7.15.0",
+		"@babel/runtime": "^7.15.3",
+		"babel-loader": "^8.2.2",
+		"css-loader": "^6.2.0",
+		"html-webpack-plugin": "^5.3.2",
+		"http-server": "^0.11.1",
+		"style-loader": "^3.2.1",
+		"webpack": "^5.51.1",
+		"webpack-cli": "^4.8.0",
+		"webpack-dev-server": "^4.0.0",
+		"webpack-pwa-manifest": "^4.3.0",
+		"workbox-webpack-plugin": "^6.2.4",
+		"code-mirror-themes": "^1.0.0",
+		"idb": "^6.1.2"
 	},
 	"scripts": {
-		"start": "react-scripts start",
-		"build": "react-scripts build",
+		"start": "react-scripts start && webpack --watch",
+		"build": "react-scripts build && webpack --mode production",
 		"test": "react-scripts test",
-		"eject": "react-scripts eject"
+		"eject": "react-scripts eject",
+		"dev": "webpack-dev-server --open"
 	},
 	"eslintConfig": {
 		"extends": [

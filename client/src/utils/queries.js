@@ -8,10 +8,10 @@ export const GET_ME = gql`
 			moodCount
 			email
 			savedMoods {
-				description
-				_id
+				type
 				moodId
-				title
+				value
+				_id
 			}
 		}
 	}
@@ -25,10 +25,11 @@ export const GET_MY_MOOD = gql`
 			moodCount
 			email
 			savedMoods {
-				description
 				_id
+				type
 				moodId
-				title
+				value
+				date
 			}
 		}
 	}

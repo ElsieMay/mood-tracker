@@ -20,9 +20,9 @@ export const ADD_USER = gql`
 				email
 				moodCount
 				savedMoods {
+					type
 					moodId
-					title
-					description
+					value
 				}
 			}
 			token
@@ -40,21 +40,24 @@ export const SAVE_MOOD = gql`
 				moodId
 				value
 				type
+				date
 			}
 		}
 	}
 `;
 export const REMOVE_MOOD = gql`
-	mutation removeMood($moodId: ID!) {
-		removeMood(moodId: $moodId) {
+	mutation deleteMood($moodId: ID!) {
+		deleteMood(moodId: $moodId) {
 			_id
 			username
 			email
 			moodCount
 			savedMoods {
+				_id
+				type
 				moodId
-				title
-				description
+				value
+				date
 			}
 		}
 	}

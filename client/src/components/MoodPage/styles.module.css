@@ -9,7 +9,7 @@
 	background: #d6de88;
 	white-space: nowrap;
 	padding: 10px 22px;
-	color: #37704f;
+	color: white;
 	font-size: 16px;
 	outline: none;
 	border: none;
@@ -19,9 +19,65 @@
 	padding: 15px;
 }
 
+.value_button_closed {
+	background: #37704f;
+}
+
 .delete_button {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+}
+
+.graph {
+	height: 1200px;
+	margin-left: 100px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	position: sticky;
+	top: 0;
+	z-index: 1;
+	max-width: 900px;
+
+	@media screen and (max-width: 960px) {
+		transition: 0.8s all ease;
+	}
+}
+
+.graph_properties {
+	width: 1000px;
+	height: 1000px;
+}
+
+@media screen and (max-width: 768px) {
+	.graph {
+		height: 300px;
+		margin-left: 0px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: sticky;
+		background: white;
+		z-index: 1;
+		max-width: 550px;
+
+		@media screen and (max-width: 960px) {
+			transition: 0.8s all ease;
+		}
+	}
+	.graph_properties {
+		width: 300px;
+		height: 300px;
+	}
+}
+.fixedView {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	flex: row;
+	display: flex;
+	justify-content: flex-end;
+	flex-direction: row;
 }

@@ -15,42 +15,16 @@ module.exports = {
 		res.json(foundUser);
 	},
 
-	async getLowMood({ user, body }, res) {
-		let data = await model.lowSchema.find({});
-
-		let filter = await data.map((v) => Object.assign({}, { type: v.type, color: v.color }));
-		res.json(filter);
-	},
-
-	async createLowMood({ body }, res) {
-		const Create = new model.lowSchema({
-			type: "low",
-			color: "#d6de88",
+	async getMood({ user, body }, res) {
+		const foundMood = await User.findOne({
+			$or: [{ _id: mood ? mood._id : params.id }],
 		});
 
-		await Create.save(function (err) {
-			if (!err) return res.json(Create);
-			return res.status(400).json({ message: `Error while creating low mood ${err}` });
-		});
-	},
+		if (!foundMood) {
+			return res.status(400).json({ message: "Cannot find a mood with this id!" });
+		}
 
-	async getAnxiousnessMood({ user, body }, res) {
-		let data = await model.anxiousnessSchema.find({});
-
-		let filter = await data.map((v) => Object.assign({}, { type: v.type, color: v.color }));
-		res.json(filter);
-	},
-
-	async createAnxiousnessMood({ body }, res) {
-		const Create = new model.anxiousnessSchema({
-			type: "anxiousness",
-			color: "#e1b37f",
-		});
-
-		await Create.save(function (err) {
-			if (!err) return res.json(Create);
-			return res.status(400).json({ message: `Error while creating low mood ${err}` });
-		});
+		res.json(foundMood);
 	},
 
 	async createUser({ body }, res) {

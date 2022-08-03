@@ -4,9 +4,10 @@ import Auth from "../../utils/auth";
 import { SAVE_MOOD } from "../../utils/mutations";
 import { saveMoodIds, getSavedMoodIds } from "../../utils/localStorage";
 import styles from "./styles.module.css";
-import { removeMoodId } from "../../utils/localStorage";
+import { deleteMoodId } from "../../utils/localStorage";
 import { REMOVE_MOOD } from "../../utils/mutations";
 import { FaSave } from "react-icons/fa";
+import { format } from "date-fns";
 
 const obj = [
 	{
@@ -56,7 +57,7 @@ export const LowMoodForm = () => {
 	);
 };
 
-const QuestionComponentLow = ({ data, event, moodId }) => {
+export const QuestionComponentLow = ({ data, event, moodId }) => {
 	console.log(data);
 	// console.log(data.valueId);
 
@@ -73,7 +74,7 @@ const QuestionComponentLow = ({ data, event, moodId }) => {
 	// get token
 	const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-	const [removeMood] = useMutation(REMOVE_MOOD);
+	const [deleteMood] = useMutation(REMOVE_MOOD);
 	// console.log(state);
 	// useEffect(() => {
 	// 	return () => saveMoodIds(savedMoodIds);
@@ -82,30 +83,47 @@ const QuestionComponentLow = ({ data, event, moodId }) => {
 	// if (!token) {
 	// 	return false;
 	// }
-
+	const [moodValue, setMoodValue] = useState([]);
 	const values = [0, 1, 2, 3];
 
 	const fontStyles = { color: "#e1b37f", fontSize: "40px", margin: "15" };
 
-	const handleSubmit = async (event) => {
+	const [btnColor, setBtnColor] = useState("#d6de88");
+
+	const newHandleSubmit = async (event) => {
 		event.preventDefault();
+	};
+
+	const fns = require("date-fns");
+
+	const [active, setActive] = useState();
+
+	const handleSubmit = async (event) => {
+		// event.preventDefault();
+		console.log("EVENT!!!!", event.target.value);
 		try {
-			const { data } = await saveMood({
+			const { moodData } = await saveMood({
 				variables: {
 					input: {
 						moodId: data.moodId,
-						value: 3, // TODO: elsie to get the actual value from the form
+						value: parseInt(event.target.value),
 						type: "low",
+						date: fns.format(new Date(), "yyyy-MM-dd"),
 					},
 				},
 			});
-			setSavedMoodIds([...savedMoodIds, savedMoodId.moodId]);
+
+			console.log("THIS IS DATA", data);
+			setSavedMoodIds([...savedMoodIds, data.moodId]);
+			setMoodValue([...moodValue, parseInt(event.target.value)]);
+			console.log("found mood", saveMood);
+			console.log("mood value", moodValue);
 		} catch (err) {
-			// console.log(err);
+			console.log(err);
 		}
 	};
 
-	const handleRemoveMood = async (moodId) => {
+	const handleDeleteMood = async (moodId) => {
 		const token = Auth.loggedIn() ? Auth.getToken() : null;
 
 		if (!token) {
@@ -113,33 +131,39 @@ const QuestionComponentLow = ({ data, event, moodId }) => {
 		}
 
 		try {
-			const { data } = await removeMood({
+			const { data } = await deleteMood({
 				variables: { moodId },
 			});
 			// upon success, remove book's id from localStorage
-			removeMoodId(moodId);
+			deleteMoodId(data.moodId);
 		} catch (err) {
 			console.error(err);
 		}
 	};
 
 	return (
-		<form id="form" onSubmit={handleSubmit}>
+		<form id="form" onSubmit={newHandleSubmit}>
 			<div className="grid gap-4">
 				<h3 className="text-md">{data.question ?? ""}</h3>
 				<h3>Please enter between 0-3 for how much this applied to you today</h3>
 				<div className={styles.submit_btn}>
 					{values.map((value) => (
 						<button
+							key={value._id}
+							value={value}
 							className={styles.value_button}
-							disabled={savedMoodIds?.some((savedMoodId) => savedMoodId === moodId)}
-							//onClick={() => handleSaveMood(mood.moodId)}
+							disabled={active}
+							onClick={(e) => {
+								handleSubmit(e);
+								btnColor === "#37704f" ? setBtnColor("#d6de88") : setBtnColor("#37704f");
+							}}
+							style={{ backgroundColor: btnColor }}
 						>
 							{savedMoodIds?.some((savedMoodId) => savedMoodId === moodId) ? "This mood has already been saved!" : value}
 						</button>
 					))}
 				</div>
-				<button className={styles.delete_button} onClick={() => handleRemoveMood(data.me.moodId)}>
+				<button className={styles.delete_button} onClick={() => handleDeleteMood(data.moodId)}>
 					<FaSave style={fontStyles} />
 					Undo your selection
 				</button>

@@ -6,7 +6,7 @@ import { LOGIN_USER } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 import Navbar from "../../components/Navbar";
 import { Sidebar } from "../../components/Sidebar";
-import BackgroundImage from "../assets/laya-clode-Zf4yTni1CWg-unsplash.jpg";
+import BackgroundImage from "../assets/valentin-salja-VMroCCpP648-unsplash.jpg";
 
 const Login = () => {
 	const [isOpen, setIsOpen] = useState(false);

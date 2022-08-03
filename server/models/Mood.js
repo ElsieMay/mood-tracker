@@ -44,7 +44,7 @@ const moodSchema = new Schema({
 	},
 	value: { type: Number },
 	type: { type: String },
-	date: { type: Date, default: Date.now },
+	date: { type: String },
 });
 
 // const LowMood = model("LowMood", lowSchema);

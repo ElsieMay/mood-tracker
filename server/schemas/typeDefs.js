@@ -3,9 +3,10 @@ const { gql } = require("apollo-server-express");
 const typeDefs = gql`
 	type Mood {
 		_id: ID
-		description: String
+		type: String
 		moodId: String
-		title: String
+		value: Int
+		date: String
 	}
 	type User {
 		_id: ID!
@@ -18,6 +19,7 @@ const typeDefs = gql`
 		type: String
 		moodId: String
 		value: Int
+		date: String
 	}
 	type Query {
 		me: User
