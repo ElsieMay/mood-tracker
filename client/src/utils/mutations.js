@@ -40,6 +40,7 @@ export const SAVE_MOOD = gql`
 				moodId
 				value
 				type
+				date
 			}
 		}
 	}
@@ -56,6 +57,7 @@ export const REMOVE_MOOD = gql`
 				type
 				moodId
 				value
+				date
 			}
 		}
 	}

@@ -6,6 +6,7 @@ const typeDefs = gql`
 		type: String
 		moodId: String
 		value: Int
+		date: String
 	}
 	type User {
 		_id: ID!
@@ -18,6 +19,7 @@ const typeDefs = gql`
 		type: String
 		moodId: String
 		value: Int
+		date: String
 	}
 	type Query {
 		me: User

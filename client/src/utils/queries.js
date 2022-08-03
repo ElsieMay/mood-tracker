@@ -29,6 +29,7 @@ export const GET_MY_MOOD = gql`
 				type
 				moodId
 				value
+				date
 			}
 		}
 	}

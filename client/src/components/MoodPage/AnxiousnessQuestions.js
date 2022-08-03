@@ -8,6 +8,7 @@ import { deleteMoodId } from "../../utils/localStorage";
 import { REMOVE_MOOD } from "../../utils/mutations";
 import { GET_MY_MOOD } from "../../utils/queries";
 import { FaSave } from "react-icons/fa";
+import { format } from "date-fns";
 
 const obj = [
 	{
@@ -82,6 +83,9 @@ const QuestionComponentAnxiousness = ({ data, event, moodId }) => {
 		event.preventDefault();
 	};
 
+	const fns = require("date-fns");
+	// console.log(fns.format(new Date(), "yyyy-MM-dd'T'HH:mm:ss.SSS"));
+
 	const [active, setActive] = useState();
 
 	const handleSubmit = async (event) => {
@@ -95,6 +99,7 @@ const QuestionComponentAnxiousness = ({ data, event, moodId }) => {
 						moodId: data.moodId,
 						value: parseInt(event.target.value),
 						type: "anxious",
+						date: fns.format(new Date(), "yyyy-MM-dd"),
 					},
 				},
 			});
