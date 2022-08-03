@@ -74,6 +74,8 @@ const QuestionComponentAnxiousness = ({ data, event, moodId }) => {
 
 	const fontStyles = { color: "#e1b37f", fontSize: "40px", margin: "15" };
 
+	const [btnColor, setBtnColor] = useState("#d6de88");
+
 	const newHandleSubmit = async (event) => {
 		event.preventDefault();
 	};
@@ -91,7 +93,6 @@ const QuestionComponentAnxiousness = ({ data, event, moodId }) => {
 					},
 				},
 			});
-
 			console.log("THIS IS DATA", data);
 			setSavedMoodIds([...savedMoodIds, data.moodId]);
 			setMoodValue([...moodValue, parseInt(event.target.value)]);
@@ -127,7 +128,17 @@ const QuestionComponentAnxiousness = ({ data, event, moodId }) => {
 				<h3>Please enter between 0-3 for how much this applied to you today</h3>
 				<div className={styles.submit_btn}>
 					{values.map((value) => (
-						<button key={value._id} value={value} className={styles.value_button} disabled={savedMoodIds?.some((savedMoodId) => savedMoodId === moodId)} onClick={(e) => handleSubmit(e)}>
+						<button
+							key={value._id}
+							value={value}
+							className={styles.value_button}
+							disabled={savedMoodIds?.some((savedMoodId) => savedMoodId === moodId)}
+							onClick={(e) => {
+								handleSubmit(e);
+								btnColor === "#37704f" ? setBtnColor("#d6de88") : setBtnColor("#37704f");
+							}}
+							style={{ backgroundColor: btnColor }}
+						>
 							{savedMoodIds?.some((savedMoodId) => savedMoodId === moodId) ? "This mood has already been saved!" : value}
 						</button>
 					))}

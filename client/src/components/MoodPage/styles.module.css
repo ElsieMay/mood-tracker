@@ -9,7 +9,7 @@
 	background: #d6de88;
 	white-space: nowrap;
 	padding: 10px 22px;
-	color: #37704f;
+	color: white;
 	font-size: 16px;
 	outline: none;
 	border: none;
@@ -17,6 +17,10 @@
 	transition: all 0.2s ease-in-out;
 	text-decoration: none;
 	padding: 15px;
+}
+
+.value_button_closed {
+	background: #37704f;
 }
 
 .delete_button {
