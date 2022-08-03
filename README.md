@@ -24,3 +24,4 @@ https://bobbyhadz.com/blog/react-change-background-color-on-click
 https://javascript-conference.com/blog/why-you-should-use-date-fns-for-manipulating-dates-with-javascript/
 https://hasura.io/blog/working-with-dates-time-timezones-graphql-postgresql/
 https://www.youtube.com/watch?v=RvEEZLxiAlQ&ab_channel=RoadsideCoder
+https://www.youtube.com/watch?v=V30Rpqi6kYE&ab_channel=Academind
