@@ -13,3 +13,8 @@ https://react-icons.github.io/react-icons/icons?name=fa
 https://www.youtube.com/watch?v=ahKsy1FS45k&ab_channel=Olli
 https://www.youtube.com/watch?v=ZluNj0-NpNI&ab_channel=BenAwad
 https://www.youtube.com/watch?v=mlSKLmG80Us&ab_channel=Arslan
+https://codesandbox.io/s/5z3ss?file=/package.json:324-348
+https://www.chartjs.org/docs/latest/charts/line.html
+https://v5.reactrouter.com/web/api/Link
+https://www.youtube.com/watch?v=pKbNCWb6USQ&ab_channel=Arslan
+https://reactnative.dev/docs/view

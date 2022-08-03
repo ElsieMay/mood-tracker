@@ -68,3 +68,12 @@
 		height: 300px;
 	}
 }
+.fixedView {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	flex: row;
+	display: flex;
+	justify-content: flex-end;
+	flex-direction: row;
+}

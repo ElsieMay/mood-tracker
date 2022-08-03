@@ -3,6 +3,7 @@ import Graph from "./graph";
 import MoodForm from "./form";
 import { useQuery } from "@apollo/client";
 import { GET_MY_MOOD } from "../../utils/queries";
+import TopButton from "./TopButton";
 
 const MoodPage = () => {
 	const { loading, data } = useQuery(GET_MY_MOOD);
@@ -16,6 +17,7 @@ const MoodPage = () => {
 					<div className="grid md:grid-cols-2 gap-4">
 						{!loading && <Graph savedMoods={data.me.savedMoods}></Graph>}
 						<MoodForm></MoodForm>
+						<TopButton />
 					</div>
 				</div>
 			</div>
