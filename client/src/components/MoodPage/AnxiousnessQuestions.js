@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import Auth from "../../utils/auth";
 import { SAVE_MOOD } from "../../utils/mutations";
 import { saveMoodIds, getSavedMoodIds } from "../../utils/localStorage";
 import styles from "./styles.module.css";
-import { removeMoodId } from "../../utils/localStorage";
+import { deleteMoodId } from "../../utils/localStorage";
 import { REMOVE_MOOD } from "../../utils/mutations";
+import { GET_MY_MOOD } from "../../utils/queries";
 import { FaSave } from "react-icons/fa";
 
 const obj = [
@@ -47,6 +48,7 @@ export const AnxiousnessForm = () => {
 };
 
 const QuestionComponentAnxiousness = ({ data, event, moodId }) => {
+	const { loading, dataAnxious } = useQuery(GET_MY_MOOD);
 	console.log(data);
 	// event.preventDefault();
 	// export const QuestionComponentLow = ({ data }) => {
@@ -60,7 +62,7 @@ const QuestionComponentAnxiousness = ({ data, event, moodId }) => {
 	// get token
 	const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-	const [removeMood] = useMutation(REMOVE_MOOD);
+	const [deleteMood] = useMutation(REMOVE_MOOD);
 	// console.log(state);
 	// useEffect(() => {
 	// 	return () => saveMoodIds(savedMoodIds);
@@ -80,7 +82,10 @@ const QuestionComponentAnxiousness = ({ data, event, moodId }) => {
 		event.preventDefault();
 	};
 
+	const [active, setActive] = useState();
+
 	const handleSubmit = async (event) => {
+		setActive(moodValue);
 		// event.preventDefault();
 		console.log("EVENT!!!!", event.target.value);
 		try {
@@ -103,7 +108,7 @@ const QuestionComponentAnxiousness = ({ data, event, moodId }) => {
 		}
 	};
 
-	const handleRemoveMood = async (moodId) => {
+	const handleDeleteMood = async (moodId) => {
 		const token = Auth.loggedIn() ? Auth.getToken() : null;
 
 		if (!token) {
@@ -111,11 +116,11 @@ const QuestionComponentAnxiousness = ({ data, event, moodId }) => {
 		}
 
 		try {
-			const { data } = await removeMood({
+			const { data } = await deleteMood({
 				variables: { moodId },
 			});
 			// upon success, remove book's id from localStorage
-			removeMoodId(moodId);
+			deleteMoodId(data.moodId);
 		} catch (err) {
 			console.error(err);
 		}
@@ -132,7 +137,7 @@ const QuestionComponentAnxiousness = ({ data, event, moodId }) => {
 							key={value._id}
 							value={value}
 							className={styles.value_button}
-							disabled={savedMoodIds?.some((savedMoodId) => savedMoodId === moodId)}
+							disabled={active}
 							onClick={(e) => {
 								handleSubmit(e);
 								btnColor === "#37704f" ? setBtnColor("#d6de88") : setBtnColor("#37704f");
@@ -143,7 +148,7 @@ const QuestionComponentAnxiousness = ({ data, event, moodId }) => {
 						</button>
 					))}
 				</div>
-				<button className={styles.delete_button} onClick={() => handleRemoveMood(data.me.moodId)}>
+				<button className={styles.delete_button} onClick={() => handleDeleteMood(data.moodId)}>
 					<FaSave style={fontStyles} />
 					Undo your selection
 				</button>

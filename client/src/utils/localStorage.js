@@ -12,7 +12,7 @@ export const saveMoodIds = (moodIdArr) => {
 	}
 };
 
-export const removeMoodId = (moodId) => {
+export const deleteMoodId = (moodId) => {
 	const savedMoodIds = localStorage.getItem("saved_moods") ? JSON.parse(localStorage.getItem("saved_moods")) : null;
 
 	if (!savedMoodIds) {

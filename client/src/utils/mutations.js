@@ -45,8 +45,8 @@ export const SAVE_MOOD = gql`
 	}
 `;
 export const REMOVE_MOOD = gql`
-	mutation removeMood($moodId: ID!) {
-		removeMood(moodId: $moodId) {
+	mutation deleteMood($moodId: ID!) {
+		deleteMood(moodId: $moodId) {
 			_id
 			username
 			email

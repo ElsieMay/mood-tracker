@@ -4,7 +4,7 @@ import Auth from "../../utils/auth";
 import { SAVE_MOOD } from "../../utils/mutations";
 import { saveMoodIds, getSavedMoodIds } from "../../utils/localStorage";
 import styles from "./styles.module.css";
-import { removeMoodId } from "../../utils/localStorage";
+import { deleteMoodId } from "../../utils/localStorage";
 import { REMOVE_MOOD } from "../../utils/mutations";
 import { FaSave } from "react-icons/fa";
 
@@ -73,7 +73,7 @@ export const QuestionComponentLow = ({ data, event, moodId }) => {
 	// get token
 	const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-	const [removeMood] = useMutation(REMOVE_MOOD);
+	const [deleteMood] = useMutation(REMOVE_MOOD);
 	// console.log(state);
 	// useEffect(() => {
 	// 	return () => saveMoodIds(savedMoodIds);
@@ -115,7 +115,7 @@ export const QuestionComponentLow = ({ data, event, moodId }) => {
 		}
 	};
 
-	const handleRemoveMood = async (moodId) => {
+	const handleDeleteMood = async (moodId) => {
 		const token = Auth.loggedIn() ? Auth.getToken() : null;
 
 		if (!token) {
@@ -123,11 +123,11 @@ export const QuestionComponentLow = ({ data, event, moodId }) => {
 		}
 
 		try {
-			const { data } = await removeMood({
+			const { data } = await deleteMood({
 				variables: { moodId },
 			});
 			// upon success, remove book's id from localStorage
-			removeMoodId(moodId);
+			deleteMoodId(data.moodId);
 		} catch (err) {
 			console.error(err);
 		}
@@ -145,7 +145,7 @@ export const QuestionComponentLow = ({ data, event, moodId }) => {
 						</button>
 					))}
 				</div>
-				<button className={styles.delete_button} onClick={() => handleRemoveMood(data.me.moodId)}>
+				<button className={styles.delete_button} onClick={() => handleDeleteMood(data.moodId)}>
 					<FaSave style={fontStyles} />
 					Undo your selection
 				</button>
