@@ -12,23 +12,33 @@ const WeekGraph = ({ savedMoods }) => {
 	const anxiousMoods = savedMoods.filter((x) => x.type === "anxious");
 	const lowMoods = savedMoods.filter((x) => x.type === "low");
 
-	const anxiousTotal = anxiousMoods.map((x) => x.date).reduce((a, b) => a + b, 0);
-	const lowTotal = lowMoods.map((x) => x.date).reduce((a, b) => a + b, 0);
+	const anxiousTotal = anxiousMoods.map((x) => x.value).reduce((a, b) => a + b, 0);
+	const lowTotal = lowMoods.map((x) => x.value).reduce((a, b) => a + b, 0);
+
+	const dateMap = anxiousMoods.map((x) => x.date);
+	var date = dateMap[0];
+
+	console.log({
+		anxiousMoods,
+		anxiousTotal,
+		lowMoods,
+		lowTotal,
+	});
 
 	const data = {
-		labels: [lowTotal, anxiousTotal],
+		labels: [date],
 		datasets: [
 			{
 				label: "Low Mood",
-				data: [33, 53, 35, 41, 53, 85, 41],
+				data: [lowTotal],
 				fill: true,
-				borderColor: "rgba(177, 185, 91, 1)",
+				borderColor: "#e1b37f",
 			},
 			{
 				label: "Anxiousness",
-				data: [33, 25, 35, 51, 13, 35, 40],
+				data: [anxiousTotal],
 				fill: false,
-				borderColor: "#e1b37f",
+				borderColor: "rgba(177, 185, 91, 1)",
 			},
 		],
 	};
