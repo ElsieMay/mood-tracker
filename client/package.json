@@ -49,13 +49,16 @@
 		"webpack-cli": "^4.8.0",
 		"webpack-dev-server": "^4.0.0",
 		"webpack-pwa-manifest": "^4.3.0",
-		"workbox-webpack-plugin": "^6.2.4"
+		"workbox-webpack-plugin": "^6.2.4",
+		"code-mirror-themes": "^1.0.0",
+		"idb": "^6.1.2"
 	},
 	"scripts": {
-		"start": "react-scripts start",
-		"build": "react-scripts build",
+		"start": "react-scripts start && webpack --watch",
+		"build": "react-scripts build && webpack --mode production",
 		"test": "react-scripts test",
-		"eject": "react-scripts eject"
+		"eject": "react-scripts eject",
+		"dev": "webpack-dev-server --open"
 	},
 	"eslintConfig": {
 		"extends": [

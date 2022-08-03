@@ -35,7 +35,7 @@ export const putDb = async (content) => {
 // export const putDb = async (content) => console.error('putDb not implemented');
 
 // Export a function we will use to GET to the database.
-export const getDb = async () => {
+export const getDb = async (content) => {
 	console.log("GET from the database");
 
 	// Create a connection to the database database and version we want to use.
@@ -48,7 +48,7 @@ export const getDb = async () => {
 	const store = tx.objectStore("mood");
 
 	// Use the .get() method to get one data in the database.
-	const request = store.get(1);
+	const request = store.get({ id: 1, value: content });
 
 	// Get confirmation of the request.
 	const result = await request;
