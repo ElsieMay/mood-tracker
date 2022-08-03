@@ -24,7 +24,7 @@
 		"jsonwebtoken": "^8.5.1",
 		"mongodb": "^4.8.0",
 		"mongoose": "^6.4.6",
-		"sequelize": "^6.21.3"
+		"mongoose-data-seed": "^2.1.6"
 	},
 	"devDependencies": {
 		"dotenv": "^16.0.1",
