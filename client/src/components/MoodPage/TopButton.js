@@ -31,7 +31,7 @@ const TopButton = () => {
 
 	return (
 		<div className="fixed bottom-2 right-2">
-			<button type="button" onClick={scrollToTop} className={"inline-flex items-center p-3 rounded-full shadow-sm text-white bg-pink-600 transition-opacity hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500"}>
+			<button type="button" onClick={scrollToTop} className={"inline-flex items-center p-3 rounded-full shadow-sm text-white bg-orange-300 transition-opacity hover:bg-orange-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-300"}>
 				<FaArrowUp className="h-6 w-6" aria-hidden="true" />
 			</button>
 		</div>
