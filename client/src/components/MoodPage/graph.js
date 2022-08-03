@@ -2,6 +2,7 @@ import React from "react";
 import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS, BarElement, CategoryScale, LinearScale } from "chart.js";
 import { Labels } from "./Labels";
+import styles from "./styles.module.css";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement);
 
@@ -52,10 +53,10 @@ const Graph = ({ savedMoods }) => {
 	};
 	return (
 		<>
-			<div className="flex justify-content max-w-xs mx-auto">
-				<div className="item">
+			<div className={styles.graph}>
+				<div className={styles.graph_properties}>
 					<div className="chart relative">
-						<Bar data={data} width={300} height={450} />
+						<Bar data={data} />
 					</div>
 					<div className="flex flex-col py-10 gap-4">
 						<Labels></Labels>

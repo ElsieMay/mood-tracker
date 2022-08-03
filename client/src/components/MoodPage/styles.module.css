@@ -26,7 +26,35 @@
 	align-items: center;
 }
 
-.image {
-	height: 100vh;
-	width: 100vw;
+.graph {
+	height: 900px;
+	padding: 20px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	position: sticky;
+	top: 0;
+	z-index: 10;
+	max-width: 500px;
+
+	@media screen and (max-width: 960px) {
+		transition: 0.8s all ease;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.graph {
+		height: 300px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: sticky;
+		background: white;
+		z-index: 1;
+		max-width: 550px;
+
+		@media screen and (max-width: 960px) {
+			transition: 0.8s all ease;
+		}
+	}
 }
