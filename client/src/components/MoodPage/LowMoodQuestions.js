@@ -7,6 +7,7 @@ import styles from "./styles.module.css";
 import { deleteMoodId } from "../../utils/localStorage";
 import { REMOVE_MOOD } from "../../utils/mutations";
 import { FaSave } from "react-icons/fa";
+import { format } from "date-fns";
 
 const obj = [
 	{
@@ -87,9 +88,15 @@ export const QuestionComponentLow = ({ data, event, moodId }) => {
 
 	const fontStyles = { color: "#e1b37f", fontSize: "40px", margin: "15" };
 
+	const [btnColor, setBtnColor] = useState("#d6de88");
+
 	const newHandleSubmit = async (event) => {
 		event.preventDefault();
 	};
+
+	const fns = require("date-fns");
+
+	const [active, setActive] = useState();
 
 	const handleSubmit = async (event) => {
 		// event.preventDefault();
@@ -101,6 +108,7 @@ export const QuestionComponentLow = ({ data, event, moodId }) => {
 						moodId: data.moodId,
 						value: parseInt(event.target.value),
 						type: "low",
+						date: fns.format(new Date(), "yyyy-MM-dd"),
 					},
 				},
 			});
@@ -140,7 +148,17 @@ export const QuestionComponentLow = ({ data, event, moodId }) => {
 				<h3>Please enter between 0-3 for how much this applied to you today</h3>
 				<div className={styles.submit_btn}>
 					{values.map((value) => (
-						<button key={value._id} value={value} className={styles.value_button} disabled={savedMoodIds?.some((savedMoodId) => savedMoodId === moodId)} onClick={(e) => handleSubmit(e)}>
+						<button
+							key={value._id}
+							value={value}
+							className={styles.value_button}
+							disabled={active}
+							onClick={(e) => {
+								handleSubmit(e);
+								btnColor === "#37704f" ? setBtnColor("#d6de88") : setBtnColor("#37704f");
+							}}
+							style={{ backgroundColor: btnColor }}
+						>
 							{savedMoodIds?.some((savedMoodId) => savedMoodId === moodId) ? "This mood has already been saved!" : value}
 						</button>
 					))}
