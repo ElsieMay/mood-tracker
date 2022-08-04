@@ -4,6 +4,7 @@ import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, PointElement,
 import { Labels } from "./Labels";
 import styles from "./styles.module.css";
 import { graphQLResultHasError } from "@apollo/client/utilities";
+import { groupBy, meanBy } from "lodash";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, PointElement, LineElement);
 
@@ -11,42 +12,52 @@ const WeekGraph = ({ savedMoods }) => {
 	console.log("this is saved moods from graph.js", savedMoods);
 	const anxiousMoods = savedMoods.filter((x) => x.type === "anxious");
 	const lowMoods = savedMoods.filter((x) => x.type === "low");
-
-	const anxiousTotal = anxiousMoods.map((x) => x.value).reduce((a, b) => a + b, 0);
-	const lowTotal = lowMoods.map((x) => x.value).reduce((a, b) => a + b, 0);
-
-	const dateMap = anxiousMoods.map((x) => x.date);
-	var date = dateMap[0];
-
-	console.log({
-		anxiousMoods,
-		anxiousTotal,
-		lowMoods,
-		lowTotal,
+	console.log("ANXIOUS MOOD DATA", anxiousMoods);
+	// const anxiousTotal = anxiousMoods.map((x) => x.value);
+	// const lowTotal = lowMoods.map((x) => x.value);
+	// const Date = savedMoods.map((x) => x.date);
+	var lowMoodsByDate = groupBy(lowMoods, (mood) => mood.date);
+	var anxiousMoodsByDate = groupBy(anxiousMoods, (mood) => mood.date);
+	const lowMoodAvgByDate = Object.entries(lowMoodsByDate).map(([date, values]) => {
+		const avgValue = meanBy(values, "value");
+		return { date, avgValue };
+	});
+	const anxiousMoodAvgByDate = Object.entries(anxiousMoodsByDate).map(([date, values]) => {
+		const avgValue = meanBy(values, "value");
+		return { date, avgValue };
 	});
 
-	const data = {
-		labels: [date],
+	console.log("LOW MOOD BY DATE", lowMoodAvgByDate);
+	console.log(anxiousMoodsByDate);
+	// console.log({ anxiousTotal, Date });
+	// console.log("DATE MAPPPP", dateMap);
+	const lowData = {
+		labels: lowMoodAvgByDate.map((x) => x.date),
 		datasets: [
 			{
 				label: "Low Mood",
-				data: [lowTotal],
+				data: lowMoodAvgByDate.map((x) => x.avgValue),
 				fill: true,
-				borderColor: "#e1b37f",
-			},
-			{
-				label: "Anxiousness",
-				data: [anxiousTotal],
-				fill: false,
-				borderColor: "rgba(177, 185, 91, 1)",
+				borderColor: "#E1B37F",
 			},
 		],
 	};
-
+	const anxiousData = {
+		labels: anxiousMoodAvgByDate.map((x) => x.date),
+		datasets: [
+			{
+				label: "Low Mood",
+				data: anxiousMoodAvgByDate.map((x) => x.avgValue),
+				fill: true,
+				borderColor: "#d6de88",
+			},
+		],
+	};
 	return (
 		<>
 			<div className="week-graph">
-				<Line data={data} />
+				<Line data={lowData} />
+				<Line data={anxiousData} />
 				<div className={styles.labels}>
 					<Labels />
 				</div>
@@ -54,5 +65,4 @@ const WeekGraph = ({ savedMoods }) => {
 		</>
 	);
 };
-
 export default WeekGraph;
