@@ -1,5 +1,36 @@
 .labels {
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-between;
 	margin: 30px;
+	margin-bottom: 30px;
+}
+.week_graph {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-left: 300px;
+	width: 1000px;
+	height: 1000px;
+	margin-bottom: 100px;
+}
+
+.anxious_graph {
+	padding: 40px;
+}
+
+.low_graph {
+	padding: 40px;
+}
+
+@media screen and (max-width: 768px) {
+	.week_graph {
+		display: block;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		margin-left: 40px;
+		width: 400px;
+		height: 400px;
+	}
 }

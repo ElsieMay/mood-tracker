@@ -55,9 +55,9 @@ const WeekGraph = ({ savedMoods }) => {
 	};
 	return (
 		<>
-			<div className="week-graph">
-				<Line data={lowData} />
-				<Line data={anxiousData} />
+			<div className={styles.week_graph}>
+				<Line data={lowData} className={styles.low_graph} />
+				<Line data={anxiousData} className={styles.anxious_graph} />
 				<div className={styles.labels}>
 					<Labels />
 				</div>
