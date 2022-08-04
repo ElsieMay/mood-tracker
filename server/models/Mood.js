@@ -50,6 +50,4 @@ const moodSchema = new Schema({
 // const LowMood = model("LowMood", lowSchema);
 // const Anxiousness = model("Anxiousness", anxiousnessSchema);
 
-const Mood = model("Mood", moodSchema);
-
-module.exports = Mood;
+module.exports = moodSchema;
