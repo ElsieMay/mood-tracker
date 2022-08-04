@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.fcd076fb.css",
-    "main.js": "/static/js/main.5945040c.js",
+    "main.css": "/static/css/main.c6e7d5c4.css",
+    "main.js": "/static/js/main.9f94b481.js",
     "static/js/787.c4e7f8f9.chunk.js": "/static/js/787.c4e7f8f9.chunk.js",
     "static/media/pexels-kindel-media-8186284.mp4": "/static/media/pexels-kindel-media-8186284.bb6056bb0dc5001ab3b7.mp4",
     "static/media/valentin-salja-VMroCCpP648-unsplash.jpg": "/static/media/valentin-salja-VMroCCpP648-unsplash.cc5509ed90eb74f998bc.jpg",
     "static/media/laya-clode-Zf4yTni1CWg-unsplash.jpg": "/static/media/laya-clode-Zf4yTni1CWg-unsplash.1e2c4380e2549a48d6c9.jpg",
     "static/media/mood-logo.png": "/static/media/mood-logo.14d538b9d6eecd2be7ec.png",
     "index.html": "/index.html",
-    "main.fcd076fb.css.map": "/static/css/main.fcd076fb.css.map",
-    "main.5945040c.js.map": "/static/js/main.5945040c.js.map",
+    "main.c6e7d5c4.css.map": "/static/css/main.c6e7d5c4.css.map",
+    "main.9f94b481.js.map": "/static/js/main.9f94b481.js.map",
     "787.c4e7f8f9.chunk.js.map": "/static/js/787.c4e7f8f9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.fcd076fb.css",
-    "static/js/main.5945040c.js"
+    "static/css/main.c6e7d5c4.css",
+    "static/js/main.9f94b481.js"
   ]
 }
