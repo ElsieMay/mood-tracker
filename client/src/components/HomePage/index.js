@@ -5,6 +5,7 @@ import { Button } from "../Button";
 import { NavLink } from "react-router-dom";
 
 export const Hero = () => {
+	// Hover state for buttons
 	const [hover, setHover] = useState(false);
 
 	const onHover = () => {

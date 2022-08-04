@@ -13,37 +13,30 @@ const obj = [
 	{
 		moodId: "Q8",
 		question: "How often have you been bothered by feeling down, depressed or hopeless?",
-		// valueId: ["3", "1", "2", "3"],
 	},
 	{
 		moodId: "Q9",
 		question: "How often have you had little interest or pleasure in doing things?",
-		// valueId: ["3", "1", "2", "3"],
 	},
 	{
 		moodId: "Q10",
 		question: "How often have you been bothered by trouble falling or staying asleep, or sleeping too much?",
-		// valueId: ["3", "1", "2", "3"],
 	},
 	{
 		moodId: "Q11",
 		question: "How often have you been bothered by feeling tired or having little energy?",
-		// valueId: ["3", "1", "2", "3"],
 	},
 	{
 		moodId: "Q12",
 		question: "How often have you been bothered by poor appetite or overeating?",
-		// valueId: ["3", "1", "2", "3"],
 	},
 	{
 		moodId: "Q13",
 		question: "How often have you been bothered by feeling bad about yourself, or that you are a failure, or have let yourself or your family down?",
-		// valueId: ["3", "1", "2", "3"],
 	},
 	{
 		moodId: "Q14",
 		question: "How often have you been bothered by trouble concentrating on things, such as reading the newspaper or watching television?",
-		// valueId: ["3", "1", "2", "3"],
 	},
 ];
 
@@ -58,13 +51,7 @@ export const LowMoodForm = () => {
 };
 
 export const QuestionComponentLow = ({ data, event, moodId }) => {
-	console.log(data);
-	// console.log(data.valueId);
-
-	// event.preventDefault();
-	// export const QuestionComponentLow = ({ data }) => {
-	// const { register, handleSubmit, resetField } = useForm();
-
+	// Query to get mood
 	const [searchedMoods, setSearchedMoods] = useState([]);
 	const savedMoodId = searchedMoods.find((mood) => mood.moodId === moodId);
 	// create state to hold saved moodId values
@@ -73,23 +60,16 @@ export const QuestionComponentLow = ({ data, event, moodId }) => {
 	const [saveMood, err] = useMutation(SAVE_MOOD);
 	// get token
 	const token = Auth.loggedIn() ? Auth.getToken() : null;
-
+	//Mutation to remove a mood
 	const [deleteMood] = useMutation(REMOVE_MOOD);
-	// console.log(state);
-	// useEffect(() => {
-	// 	return () => saveMoodIds(savedMoodIds);
-	// });
 
-	// if (!token) {
-	// 	return false;
-	// }
 	const [moodValue, setMoodValue] = useState([]);
 	const values = [0, 1, 2, 3];
-
+	// delete button styles
 	const fontStyles = { color: "#e1b37f", fontSize: "40px", margin: "15" };
 
 	const [btnColor, setBtnColor] = useState("#d6de88");
-
+	// event handler
 	const newHandleSubmit = async (event) => {
 		event.preventDefault();
 	};
@@ -97,10 +77,8 @@ export const QuestionComponentLow = ({ data, event, moodId }) => {
 	const fns = require("date-fns");
 
 	const [active, setActive] = useState();
-
+	// Event handler to handle user input
 	const handleSubmit = async (event) => {
-		// event.preventDefault();
-		console.log("EVENT!!!!", event.target.value);
 		try {
 			const { moodData } = await saveMood({
 				variables: {
@@ -113,16 +91,13 @@ export const QuestionComponentLow = ({ data, event, moodId }) => {
 				},
 			});
 
-			console.log("THIS IS DATA", data);
 			setSavedMoodIds([...savedMoodIds, data.moodId]);
 			setMoodValue([...moodValue, parseInt(event.target.value)]);
-			console.log("found mood", saveMood);
-			console.log("mood value", moodValue);
 		} catch (err) {
 			console.log(err);
 		}
 	};
-
+	// Event handler to remove a mood
 	const handleDeleteMood = async (moodId) => {
 		const token = Auth.loggedIn() ? Auth.getToken() : null;
 
@@ -134,7 +109,7 @@ export const QuestionComponentLow = ({ data, event, moodId }) => {
 			const { data } = await deleteMood({
 				variables: { moodId },
 			});
-			// upon success, remove book's id from localStorage
+			// upon success, remove mood's id from localStorage
 			deleteMoodId(data.moodId);
 		} catch (err) {
 			console.error(err);

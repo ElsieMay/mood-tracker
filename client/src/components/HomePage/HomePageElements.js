@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { MdKeyboardArrowRight, MdArrowForward } from "react-icons/md";
 
+/* Styling for homepage Container */
 export const HeroContainer = styled.div`
 	background: #fff;
 	display: flex;
@@ -23,6 +24,7 @@ export const HeroContainer = styled.div`
 	}
 `;
 
+/* Styling for homepage Background */
 export const HeroBackground = styled.div`
 	position: absolute;
 	top: 0;
@@ -34,6 +36,7 @@ export const HeroBackground = styled.div`
 	overflow: hidden;
 `;
 
+/* Styling for homepage video */
 export const VideoBg = styled.video`
 	width: 100%;
 	height: 100%;
@@ -42,6 +45,7 @@ export const VideoBg = styled.video`
 	background: #fff;
 `;
 
+/* Styling for homepage Text */
 export const HeroText = styled.div`
 	z-index: 3;
 	max-width: 1200px;
@@ -52,6 +56,7 @@ export const HeroText = styled.div`
 	align-items: center;
 `;
 
+/* Styling for homepage Title */
 export const HeroTitle = styled.h1`
 	color: #fff;
 	font-size: 48px;
@@ -66,6 +71,7 @@ export const HeroTitle = styled.h1`
 	}
 `;
 
+/* Styling for homepage Paragraph */
 export const HeroP = styled.p`
 	margin-top: 24px;
 	color: #fff;
@@ -82,6 +88,7 @@ export const HeroP = styled.p`
 	}
 `;
 
+/* Styling for homepage wrapper */
 export const HeroBtnWrapper = styled.div`
 	margin-top: 32px;
 	display: flex;
@@ -89,11 +96,13 @@ export const HeroBtnWrapper = styled.div`
 	align-items: center;
 `;
 
+/* Styling for arrow icons */
 export const ArrowForward = styled(MdArrowForward)`
 	margin-left: 8px;
 	font-size: 20px;
 `;
 
+/* Styling for arrow icons */
 export const ArrowRight = styled(MdKeyboardArrowRight)`
 	margin-left: 8px;
 	font-size: 20px;

@@ -9,20 +9,21 @@ import { Sidebar } from "../../components/Sidebar";
 import BackgroundImage from "../assets/valentin-salja-VMroCCpP648-unsplash.jpg";
 
 const Login = () => {
+	// Hover state for buttons
 	const [isOpen, setIsOpen] = useState(false);
 
 	const toggle = () => {
 		setIsOpen(!isOpen);
 	};
-
+	// set initial form state
 	const [userFormData, setUserFormData] = useState({ email: "", password: "" });
 
 	const [error, setError] = useState("");
 
 	const [validated] = useState("false");
-
+	//mutation
 	const [loginUser] = useMutation(LOGIN_USER);
-
+	//event handler for submit
 	const handleInputChange = (event) => {
 		const { name, value } = event.target;
 		setUserFormData({ ...userFormData, [name]: value });
@@ -42,7 +43,7 @@ const Login = () => {
 				setError(error.response.data.message);
 			}
 		}
-
+		//Set user data
 		setUserFormData({
 			username: "",
 			email: "",

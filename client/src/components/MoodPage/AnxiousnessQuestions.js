@@ -49,11 +49,9 @@ export const AnxiousnessForm = () => {
 };
 
 const QuestionComponentAnxiousness = ({ data, event, moodId }) => {
+	// Query to get mood
 	const { loading, dataAnxious } = useQuery(GET_MY_MOOD);
-	console.log(data);
-	// event.preventDefault();
-	// export const QuestionComponentLow = ({ data }) => {
-	// const { register, handleSubmit, resetField } = useForm();
+	//State to search moods
 	const [searchedMoods, setSearchedMoods] = useState([]);
 	const savedMoodId = searchedMoods.find((mood) => mood.moodId === moodId);
 	// create state to hold saved moodId values
@@ -62,36 +60,26 @@ const QuestionComponentAnxiousness = ({ data, event, moodId }) => {
 	const [saveMood, err] = useMutation(SAVE_MOOD);
 	// get token
 	const token = Auth.loggedIn() ? Auth.getToken() : null;
-
+	//Mutation to remove a mood
 	const [deleteMood] = useMutation(REMOVE_MOOD);
-	// console.log(state);
-	// useEffect(() => {
-	// 	return () => saveMoodIds(savedMoodIds);
-	// });
 
-	// if (!token) {
-	// 	return false;
-	// }
 	const [moodValue, setMoodValue] = useState([]);
 	const values = [0, 1, 2, 3];
-
+	// delete button styles
 	const fontStyles = { color: "#e1b37f", fontSize: "40px", margin: "15" };
 
 	const [btnColor, setBtnColor] = useState("#d6de88");
-
+	// event handler
 	const newHandleSubmit = async (event) => {
 		event.preventDefault();
 	};
 
 	const fns = require("date-fns");
-	// console.log(fns.format(new Date(), "yyyy-MM-dd'T'HH:mm:ss.SSS"));
 
 	const [active, setActive] = useState();
-
+	// Event handler to handle user input
 	const handleSubmit = async (event) => {
 		setActive(moodValue);
-		// event.preventDefault();
-		console.log("EVENT!!!!", event.target.value);
 		try {
 			const { moodData } = await saveMood({
 				variables: {
@@ -103,16 +91,13 @@ const QuestionComponentAnxiousness = ({ data, event, moodId }) => {
 					},
 				},
 			});
-			console.log("THIS IS DATA", data);
 			setSavedMoodIds([...savedMoodIds, data.moodId]);
 			setMoodValue([...moodValue, parseInt(event.target.value)]);
-			console.log("found mood", saveMood);
-			console.log("mood value", moodValue);
 		} catch (err) {
 			console.log(err);
 		}
 	};
-
+	// Event handler to remove a mood
 	const handleDeleteMood = async (moodId) => {
 		const token = Auth.loggedIn() ? Auth.getToken() : null;
 
@@ -124,7 +109,7 @@ const QuestionComponentAnxiousness = ({ data, event, moodId }) => {
 			const { data } = await deleteMood({
 				variables: { moodId },
 			});
-			// upon success, remove book's id from localStorage
+			// upon success, remove mood's id from localStorage
 			deleteMoodId(data.moodId);
 		} catch (err) {
 			console.error(err);
