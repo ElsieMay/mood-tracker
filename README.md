@@ -1,5 +1,32 @@
 # mood-tracker
 
+The motivation for this project was to create a MERN stack single-page application from scratch, combining a scalable MongoDB back end, a GraphQL API, and an Express.js and Node.js server with a React front end, implementing user authentication with JWT to build a user-focused platform. I created Mood. Mood is a tracker for monitoring a user’s mental health. The user answers a list of questions and this is dynamically rendered onto charts, so that they can visually see how their moods are tracking. The motivation was also to create better access to mental health assessments, guided by the user themselves.
+
+I learnt about GraphQL API's, Apollo Server, building a MERN stack application, Chart.Js, JWT authentication, Lodash, MongoDB, Node.Js, Express.Js and much more.
+
+## Table of Contents (Optional)
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Screenshots](#screenshots)
+- [Credits](#credits)
+- [Contact](#contact)
+- [License](#license)
+
+## Installation
+
+The Github repository can be viewed via this link, https://github.com/ElsieMay/mood-tracker. Please npm install or use the PWA feature for an offline installation.
+
+## Usage
+
+The deployed application can be viewed via this link, https://elsie-mood-tracker.herokuapp.com/mood-tracker.
+
+## Screenshots
+
+## Credits
+
+I followed these links for tutorials and additional information;
+
 https://graphql.org/code/
 https://www.youtube.com/watch?v=BcLNfwF04Kw&ab_channel=TraversyMedia
 https://styled-components.com/
@@ -31,3 +58,9 @@ https://javascript.plainenglish.io/seeding-mongodb-database-from-node-the-simple
 https://stackoverflow.com/questions/59205530/heroku-server-crashes-with-javascript-heap-out-of-memory-when-deploying-react
 https://coding-boot-camp.github.io/full-stack/mongodb/deploy-with-heroku-and-mongodb-atlas
 https://stackoverflow.com/questions/13163912/production-app-outage-h20-app-boot-timeout
+
+## Contact
+
+My email is: elsiemaylawrie1@gmail.com.
+
+My github username is: https://github.com/ElsieMay.
