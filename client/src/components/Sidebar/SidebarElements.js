@@ -3,6 +3,7 @@ import { FaTimes } from "react-icons/fa";
 import { Link as LinkR } from "react-router-dom";
 import { Link as LinkS } from "react-scroll";
 
+/* Styling for sidebar Container */
 export const SidebarContainer = styled.aside`
 	position: fixed;
 	z-index: 999;
@@ -18,6 +19,7 @@ export const SidebarContainer = styled.aside`
 	top: ${({ isOpen }) => (isOpen ? "0" : "-100%")};
 `;
 
+/* Styling close icon */
 export const CloseIcon = styled(FaTimes)`
 	color: #fff;
 `;
@@ -32,10 +34,12 @@ export const Icon = styled.div`
 	outline: none;
 `;
 
+/* Styling for sidebar wrapper */
 export const SidebarWrapper = styled.div`
 	color: #fff;
 `;
 
+/* Styling for sidebar menu */
 export const SidebarMenu = styled.ul`
 	display: grid;
 	grid-template-columns: 1fr;
@@ -46,6 +50,7 @@ export const SidebarMenu = styled.ul`
         grid-template-rows: repeat(6, 60px);
 `;
 
+/* Styling for sidebar navigation links */
 export const SidebarLink = styled(LinkR)`
 	display: flex;
 	align-items: center;
@@ -63,6 +68,7 @@ export const SidebarLink = styled(LinkR)`
         transition: 0.2s ease-in-out;
     }`;
 
+/* Styling for sidebar button wrapper */
 export const SideBtnWrap = styled.div`
 	display: flex;
 	justify-content: center;
@@ -71,6 +77,7 @@ export const SideBtnWrap = styled.div`
 	margin-top: 50px;
 `;
 
+/* Styling for sidebar login and sign up routes */
 export const SidebarRoute = styled(LinkR)`
 	border-radius: 30px;
 	background: #d6de88;
