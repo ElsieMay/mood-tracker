@@ -15,7 +15,7 @@ I learnt about GraphQL API's, Apollo Server, building a MERN stack application, 
 
 ## Installation
 
-The Github repository can be viewed via this link, https://github.com/ElsieMay/mood-tracker. Please npm install or use the PWA feature for an offline installation experience.
+The Github repository can be viewed via this link, https://github.com/ElsieMay/mood-tracker. Please run npm install to use this project locally or use the PWA feature for an offline installation experience.
 
 ## Usage
 
