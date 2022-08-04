@@ -1,5 +1,6 @@
 import { gql } from "@apollo/client";
 
+//query to get user data, using apollo
 export const GET_ME = gql`
 	query Me {
 		me {
@@ -17,6 +18,7 @@ export const GET_ME = gql`
 	}
 `;
 
+//query to get mood data, using apollo
 export const GET_MY_MOOD = gql`
 	query MyMood {
 		me {

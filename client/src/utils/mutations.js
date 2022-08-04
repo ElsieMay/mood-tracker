@@ -1,5 +1,6 @@
 import { gql } from "@apollo/client";
 
+//mutation for logging in a user, using apollo
 export const LOGIN_USER = gql`
 	mutation loginUser($email: String!, $password: String!) {
 		login(email: $email, password: $password) {
@@ -11,6 +12,7 @@ export const LOGIN_USER = gql`
 		}
 	}
 `;
+//mutation for adding a user, using apollo
 export const ADD_USER = gql`
 	mutation addUser($username: String!, $email: String!, $password: String!) {
 		addUser(username: $username, email: $email, password: $password) {
@@ -29,6 +31,7 @@ export const ADD_USER = gql`
 		}
 	}
 `;
+//mutation for saving a mood, using apollo
 export const SAVE_MOOD = gql`
 	mutation saveMood($input: saveMoodInput!) {
 		saveMood(input: $input) {
@@ -45,6 +48,7 @@ export const SAVE_MOOD = gql`
 		}
 	}
 `;
+//mutation for deleting a mood, using apollo
 export const REMOVE_MOOD = gql`
 	mutation deleteMood($moodId: ID!) {
 		deleteMood(moodId: $moodId) {

@@ -4,6 +4,7 @@ export const getSavedMoodIds = () => {
 	return savedMoodIds;
 };
 
+//Stores moods
 export const saveMoodIds = (moodIdArr) => {
 	if (moodIdArr.length) {
 		localStorage.setItem("saved_moods", JSON.stringify(moodIdArr));
@@ -11,7 +12,7 @@ export const saveMoodIds = (moodIdArr) => {
 		localStorage.removeItem("saved_moods");
 	}
 };
-
+//deletes moods
 export const deleteMoodId = (moodId) => {
 	const savedMoodIds = localStorage.getItem("saved_moods") ? JSON.parse(localStorage.getItem("saved_moods")) : null;
 

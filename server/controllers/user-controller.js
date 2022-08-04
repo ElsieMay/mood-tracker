@@ -3,6 +3,7 @@ const model = require("../models/Mood");
 const { signToken } = require("../utils/auth");
 
 module.exports = {
+	//Gets a single user
 	async getSingleUser({ user = null, params }, res) {
 		const foundUser = await User.findOne({
 			$or: [{ _id: user ? user._id : params.id }, { username: params.username }],
@@ -14,7 +15,7 @@ module.exports = {
 
 		res.json(foundUser);
 	},
-
+	//Gets a single mood
 	async getMood({ user, body }, res) {
 		const foundMood = await User.findOne({
 			$or: [{ _id: mood ? mood._id : params.id }],
@@ -26,7 +27,7 @@ module.exports = {
 
 		res.json(foundMood);
 	},
-
+	//Creates a user
 	async createUser({ body }, res) {
 		const user = await User.create(body);
 
@@ -37,7 +38,7 @@ module.exports = {
 		const token = signToken(user);
 		res.json({ token, user });
 	},
-
+	//Finds a user and logs them in, using validation
 	async login({ body }, res) {
 		const user = await User.findOne({ $or: [{ username: body.username }, { email: body.email }] });
 		if (!user) {
@@ -52,7 +53,7 @@ module.exports = {
 		const token = signToken(user);
 		res.json({ token, user });
 	},
-
+	//Updates moods to save a new one
 	async saveMood({ user, body }, res) {
 		console.log(user);
 		try {
@@ -63,7 +64,7 @@ module.exports = {
 			return res.status(400).json(err);
 		}
 	},
-
+	//Finds a mood by id and deletes it
 	async deleteMood({ user, params }, res) {
 		const updatedUser = await User.findOneAndUpdate({ _id: user._id }, { $pull: { savedMoods: { moodId: params.moodId } } }, { new: true });
 		if (!updatedUser) {
