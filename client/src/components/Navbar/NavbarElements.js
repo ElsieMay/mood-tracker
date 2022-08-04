@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Link as LinkR } from "react-router-dom";
 
+/* Styling for navbar Container */
 export const Nav = styled.nav`
 background: #687b4e;
 height: 90px;
@@ -26,6 +27,7 @@ export const NavbarContainer = styled.div`
 	padding: 0 24px;
 `;
 
+/* Styling for logo */
 export const NavLogo = styled(LinkR)`
 	justify-self: flex-start;
 	cursor: pointer;
@@ -33,6 +35,7 @@ export const NavLogo = styled(LinkR)`
 	align-items: center;
 `;
 
+/* Styling for mobile responsiveness*/
 export const MobileIcon = styled.div`
 	display: none;
 
@@ -48,6 +51,7 @@ export const MobileIcon = styled.div`
 	}
 `;
 
+/* Styling for navbar menu list */
 export const NavMenu = styled.ul`
 	display: flex;
 	justify-content: center;
@@ -65,6 +69,7 @@ export const NavItem = styled.li`
 	// height: 80px;
 `;
 
+/* Styling for navbar links */
 export const NavLinks = styled(LinkR)`
 color: #fff;
 display: flex;
@@ -78,6 +83,7 @@ cursor: pointer;
 //     border-bottom: 3px solid #fff;
 // }`;
 
+/* Styling for navbar buttons */
 export const NavBtn = styled.nav`
 	display: flex;
 	align-items: center;
