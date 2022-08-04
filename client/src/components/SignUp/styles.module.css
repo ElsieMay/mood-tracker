@@ -1,3 +1,4 @@
+/* Styling for sign up container */
 .signup_container {
 	position: relative;
 	width: 100%;
@@ -8,6 +9,7 @@
 	justify-content: center;
 }
 
+/* Styling for sign up form container */
 .signup_form_container {
 	position: absolute;
 	width: 900px;
@@ -17,6 +19,7 @@
 	box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 20%), 0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
 }
 
+/* Styling for left side of form */
 .left {
 	flex: 1;
 	display: flex;
@@ -28,6 +31,7 @@
 	border-bottom-left-radius: 10px;
 }
 
+/* Styling for left side of form title*/
 .left h1 {
 	margin-top: 0;
 	color: white;
@@ -35,6 +39,7 @@
 	align-self: center;
 }
 
+/* Styling for right side of form */
 .right {
 	flex: 2;
 	display: flex;
@@ -46,17 +51,20 @@
 	border-bottom-right-radius: 10px;
 }
 
+/* Styling for form container */
 .form_container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
 
+/* Styling for title */
 .form_container h1 {
 	font-size: 40px;
 	margin-top: 0;
 }
 
+/* Styling for input sections */
 .input {
 	outline: none;
 	border: none;
@@ -79,6 +87,7 @@
 	text-align: center;
 }
 
+/* Styling for buttons */
 .white_btn,
 .green_btn {
 	border: none;
@@ -98,6 +107,7 @@
 	margin: 10px;
 }
 
+/* Styling for background */
 .background {
 	background: #fff;
 	display: flex;
@@ -110,11 +120,13 @@
 	background-repeat: no-repeat;
 }
 
+/* Styling for background image */
 .image {
 	height: 100vh;
 	width: 100vw;
 }
 
+/* Media queries for mobile devices */
 @media (max-width: 768px) {
 	.signup_form_container {
 		width: 400px;

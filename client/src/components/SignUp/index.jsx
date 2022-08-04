@@ -8,7 +8,9 @@ import Navbar from "../../components/Navbar";
 import { Sidebar } from "../../components/Sidebar";
 import BackgroundImage from "../assets/laya-clode-Zf4yTni1CWg-unsplash.jpg";
 
+//Function for signing up
 const Signup = () => {
+	// Hover state for buttons
 	const [isOpen, setIsOpen] = useState(false);
 
 	const toggle = () => {
@@ -30,6 +32,7 @@ const Signup = () => {
 		setUserFormData({ ...userFormData, [name]: value });
 	};
 
+	//Event handler for form submission
 	const handleFormSubmit = async (event) => {
 		event.preventDefault();
 
@@ -43,7 +46,7 @@ const Signup = () => {
 				setError(error.response.userFormData.message);
 			}
 		}
-
+		//Set user data
 		setUserFormData({
 			username: "",
 			email: "",

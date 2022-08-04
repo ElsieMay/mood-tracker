@@ -4,8 +4,8 @@ import { useQuery } from "@apollo/client";
 import { GET_MY_MOOD } from "../../utils/queries";
 
 const WeekPage = () => {
+	//Mutation to retrieve moods
 	const { loading, data } = useQuery(GET_MY_MOOD);
-	console.log(data);
 
 	return (
 		<div>

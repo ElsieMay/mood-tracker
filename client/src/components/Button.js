@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+/* This button is used across multiple components */
 export const Button = styled.button`
 	border-radius: 50px;
 	background: ${({ primary }) => (primary ? "#fff" : "#d6de88")};

@@ -4,6 +4,7 @@ import { Sidebar } from "../components/Sidebar";
 import WeekPage from "../components/Week";
 import styled from "styled-components";
 
+//Function to hold week page styled components
 const Week = () => {
 	const [isOpen, setIsOpen] = useState(false);
 

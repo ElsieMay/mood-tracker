@@ -4,6 +4,7 @@ import { Sidebar } from "../components/Sidebar";
 import { Hero } from "../components/HomePage";
 import styled from "styled-components";
 
+//Function to hold services page styled components
 const Services = () => {
 	const [isOpen, setIsOpen] = useState(false);
 

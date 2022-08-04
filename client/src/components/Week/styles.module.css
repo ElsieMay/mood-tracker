@@ -1,9 +1,11 @@
+/* Styling for labels */
 .labels {
 	display: flex;
 	justify-content: space-between;
 	margin: 30px;
 	margin-bottom: 30px;
 }
+/* Styling for weekly graph */
 .week_graph {
 	display: flex;
 	flex-direction: column;
@@ -14,15 +16,16 @@
 	height: 1000px;
 	margin-bottom: 100px;
 }
-
+/* Styling for anxious graph */
 .anxious_graph {
 	padding: 40px;
 }
-
+/* Styling for low mood graph */
 .low_graph {
 	padding: 40px;
 }
 
+/* Media screen responsiveness */
 @media screen and (max-width: 768px) {
 	.week_graph {
 		display: block;

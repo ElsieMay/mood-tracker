@@ -9,28 +9,25 @@ import { groupBy, meanBy } from "lodash";
 ChartJS.register(CategoryScale, LinearScale, BarElement, PointElement, LineElement);
 
 const WeekGraph = ({ savedMoods }) => {
-	console.log("this is saved moods from graph.js", savedMoods);
+	//Filter through saved mood data to retrieve anxious and low types
 	const anxiousMoods = savedMoods.filter((x) => x.type === "anxious");
 	const lowMoods = savedMoods.filter((x) => x.type === "low");
-	console.log("ANXIOUS MOOD DATA", anxiousMoods);
-	// const anxiousTotal = anxiousMoods.map((x) => x.value);
-	// const lowTotal = lowMoods.map((x) => x.value);
-	// const Date = savedMoods.map((x) => x.date);
+
+	//Lodash groups data by mood
 	var lowMoodsByDate = groupBy(lowMoods, (mood) => mood.date);
 	var anxiousMoodsByDate = groupBy(anxiousMoods, (mood) => mood.date);
+	//Finds average value per day
 	const lowMoodAvgByDate = Object.entries(lowMoodsByDate).map(([date, values]) => {
 		const avgValue = meanBy(values, "value");
 		return { date, avgValue };
 	});
+	//Finds average value per day
 	const anxiousMoodAvgByDate = Object.entries(anxiousMoodsByDate).map(([date, values]) => {
 		const avgValue = meanBy(values, "value");
 		return { date, avgValue };
 	});
 
-	console.log("LOW MOOD BY DATE", lowMoodAvgByDate);
-	console.log(anxiousMoodsByDate);
-	// console.log({ anxiousTotal, Date });
-	// console.log("DATE MAPPPP", dateMap);
+	//Map through data for dates and corresponding values
 	const lowData = {
 		labels: lowMoodAvgByDate.map((x) => x.date),
 		datasets: [
@@ -42,6 +39,7 @@ const WeekGraph = ({ savedMoods }) => {
 			},
 		],
 	};
+	//Map through data for dates and corresponding values
 	const anxiousData = {
 		labels: anxiousMoodAvgByDate.map((x) => x.date),
 		datasets: [

@@ -2,6 +2,7 @@ import React from "react";
 import { LowMoodForm } from "./LowMoodQuestions";
 import { AnxiousnessForm } from "./AnxiousnessQuestions";
 
+//Component holds both anxiousness and low mood forms
 export default function MoodForm() {
 	return (
 		<>

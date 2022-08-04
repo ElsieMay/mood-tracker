@@ -5,6 +5,7 @@ import { Hero } from "../components/HomePage";
 import styled from "styled-components";
 import MoodPage from "../components/MoodPage/index";
 
+//Function to hold mood page styled components
 const Mood = () => {
 	const [isOpen, setIsOpen] = useState(false);
 

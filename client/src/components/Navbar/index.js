@@ -3,6 +3,7 @@ import { FaBars } from "react-icons/fa";
 import MainLogo from "../assets/mood-logo.png";
 import { Nav, NavbarContainer, NavLogo, MobileIcon, NavMenu, NavItem, NavLinks, NavBtn, NavBtnLink } from "./NavbarElements";
 
+//Contains Navbar styled components and navigation links
 const Navbar = ({ toggle }) => {
 	return (
 		<>
