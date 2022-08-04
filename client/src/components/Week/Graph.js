@@ -16,17 +16,12 @@ const WeekGraph = ({ savedMoods }) => {
 	const lowTotal = lowMoods.map((x) => x.value).reduce((a, b) => a + b, 0);
 
 	const dateMap = anxiousMoods.map((x) => x.date);
-	var date = dateMap[0];
+	// var date = dateMap;
 
-	console.log({
-		anxiousMoods,
-		anxiousTotal,
-		lowMoods,
-		lowTotal,
-	});
+	console.log("DATE MAPPPP", dateMap);
 
 	const data = {
-		labels: [date],
+		labels: [dateMap[0], dateMap[1], dateMap[2]],
 		datasets: [
 			{
 				label: "Low Mood",
