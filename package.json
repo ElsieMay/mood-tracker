@@ -4,7 +4,7 @@
 	"description": "Mood tracking application",
 	"main": "server.js",
 	"scripts": {
-		"start": "node --optimize_for_size --max_old_space_size=460 server.js",
+		"start": "node --optimize_for_size --max_old_space_size=460 server/server.js",
 		"server": "cd server && npm start",
 		"develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
 		"install": "cd server && npm i && cd ../client && npm i",
