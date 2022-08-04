@@ -23,17 +23,17 @@ The deployed application can be viewed via this link, https://elsie-mood-tracker
 
 ## Screenshots
 
-![Screenshot](https://github.com/ElsieMay/11_Homework_Express_Js_Note_Taker/blob/main/images/Screen%20Shot%202022-05-08%20at%209.19.50%20pm.png)
+![Screenshot](https://github.com/ElsieMay/mood-tracker/blob/main/client/src/components/assets/Screen%20Shot%202022-08-04%20at%209.44.47%20pm.png)
 
-![Screenshot](https://github.com/ElsieMay/11_Homework_Express_Js_Note_Taker/blob/main/images/Screen%20Shot%202022-05-08%20at%209.20.04%20pm.png)
+![Screenshot](https://github.com/ElsieMay/mood-tracker/blob/main/client/src/components/assets/Screen%20Shot%202022-08-04%20at%209.45.02%20pm.png)
 
-![Screenshot](https://github.com/ElsieMay/11_Homework_Express_Js_Note_Taker/blob/main/images/Screen%20Shot%202022-05-08%20at%209.20.15%20pm.png)
+![Screenshot](https://github.com/ElsieMay/mood-tracker/blob/main/client/src/components/assets/Screen%20Shot%202022-08-04%20at%209.45.13%20pm%201.png)
 
-![Screenshot](https://github.com/ElsieMay/11_Homework_Express_Js_Note_Taker/blob/main/images/Screen%20Shot%202022-05-08%20at%209.19.50%20pm.png)
+![Screenshot](https://github.com/ElsieMay/mood-tracker/blob/main/client/src/components/assets/Screen%20Shot%202022-08-04%20at%209.45.13%20pm.png)
 
-![Screenshot](https://github.com/ElsieMay/11_Homework_Express_Js_Note_Taker/blob/main/images/Screen%20Shot%202022-05-08%20at%209.20.04%20pm.png)
+![Screenshot](https://github.com/ElsieMay/mood-tracker/blob/main/client/src/components/assets/Screen%20Shot%202022-08-04%20at%209.45.26%20pm.png)
 
-![Screenshot](https://github.com/ElsieMay/11_Homework_Express_Js_Note_Taker/blob/main/images/Screen%20Shot%202022-05-08%20at%209.20.15%20pm.png)
+![Screenshot](https://github.com/ElsieMay/mood-tracker/blob/main/client/src/components/assets/Screen%20Shot%202022-08-04%20at%209.45.39%20pm.png)
 
 ## Credits
 
