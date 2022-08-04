@@ -25,3 +25,6 @@ https://javascript-conference.com/blog/why-you-should-use-date-fns-for-manipulat
 https://hasura.io/blog/working-with-dates-time-timezones-graphql-postgresql/
 https://www.youtube.com/watch?v=RvEEZLxiAlQ&ab_channel=RoadsideCoder
 https://www.youtube.com/watch?v=V30Rpqi6kYE&ab_channel=Academind
+https://www.youtube.com/watch?v=OPqRXKLLM1I&ab_channel=coderaweso.me
+https://stackoverflow.com/questions/44427563/what-is-the-best-way-to-seed-data-in-nodejs-mongoose
+https://javascript.plainenglish.io/seeding-mongodb-database-from-node-the-simplest-way-3d6a0c1c4668
