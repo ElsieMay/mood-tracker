@@ -1,5 +1,6 @@
 const { gql } = require("apollo-server-express");
 
+//Type defs for users and mood inputs
 const typeDefs = gql`
 	type Mood {
 		_id: ID
