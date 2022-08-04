@@ -6,9 +6,9 @@ import { GET_MY_MOOD } from "../../utils/queries";
 import TopButton from "./TopButton";
 
 const MoodPage = () => {
+	//Query to get moods
 	const { loading, data } = useQuery(GET_MY_MOOD);
-	console.log(data);
-
+	//Returns both graph and mood forms
 	return (
 		<div>
 			<div className="App">

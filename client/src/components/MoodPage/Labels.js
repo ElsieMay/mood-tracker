@@ -12,6 +12,7 @@ const obj = [
 	},
 ];
 
+//Map through labels to return data
 export const Labels = () => {
 	console.log(api.useSaveMoodQuery());
 
@@ -32,7 +33,6 @@ function LabelComponent({ data }) {
 				<div className="w-2 h-2 rounded py-3" style={{ background: data.color ?? "#d6de88" }}></div>
 				<h3 className="text-md">{data.type ?? ""}</h3>
 			</div>
-			{/* <h3 className="font-bold">{data.percent ?? 0}%</h3> */}
 		</div>
 	);
 }

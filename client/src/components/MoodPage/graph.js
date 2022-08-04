@@ -6,19 +6,17 @@ import styles from "./styles.module.css";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement);
 
+//Graph holds data inputted by user onto Chart.js graph
 const Graph = ({ savedMoods }) => {
-	console.log("this is saved moods from graph.js", savedMoods);
+	//Filter through data to find types
 	const anxiousMoods = savedMoods.filter((x) => x.type === "anxious");
 	const lowMoods = savedMoods.filter((x) => x.type === "low");
 
+	//Map and reduce to combine totals
 	const anxiousTotal = anxiousMoods.map((x) => x.value).reduce((a, b) => a + b, 0);
 	const lowTotal = lowMoods.map((x) => x.value).reduce((a, b) => a + b, 0);
-	console.log({
-		anxiousMoods,
-		anxiousTotal,
-		lowMoods,
-		lowTotal,
-	});
+
+	// Chart.js data, using above data
 	var data = {
 		labels: ["Low Mood", "Anxiousness"],
 		datasets: [
